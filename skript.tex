@@ -1,0 +1,453 @@
+\documentclass[algorithm,pgfplots,colortheme=dark]{cuzbeamer}
+\usepackage[ngerman]{babel}
+\usepackage[scale=2]{ccicons}
+\usepackage{listings}
+
+\newcommand{\py}[1]{\mintinline{python}{#1}}
+\newcommand{\pybw}[1]{\mintinline[style=bw]{python}{#1}}
+
+\begin{document}
+\input{initialization.tex}
+\maketitle
+
+\section{Grundlegendes}
+
+\begin{frame}
+\begin{block}{Warum Python?}
+	\begin{itemize}
+	\item Einfaches Setup
+	\item Einstiegsfreundliche Syntax
+	\item Python ist eine Hochsprache
+	\item Python muss nicht kompiliert, sondern nur interpretiert werden
+	\item Großes \textit{ecosystem}
+	\item Python ist extrem vielseitig
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+
+\begin{block}{Ablauf des Kurses}
+	\begin{itemize}
+	\item Kommunikation über Slack 
+	\item Jede Woche ein Aufgabenblatt $\rightarrow$ Besprechung in der nächsten Woche
+	\item Download und Kollaboration über Github
+	\item Mischung aus Vortrag, Live-Coding und Präsenzübungen
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Was wird benötigt}
+\uncover<+->{
+\metroset{block=fill}
+\begin{block}{Am Anfang}
+\begin{itemize}
+	\item Texteditor
+	\item Compiler/Interpreter
+	\item Google
+\end{itemize}
+\end{block}
+}
+\uncover<+->{
+\metroset{block=fill}	
+\begin{block}{Später}
+	\begin{itemize}
+	\item Integrierte Entwicklungsumgebung (IDE)
+	\item Versionskontrolle (VCS)
+	\item Virtueller Maschinen
+	\item Debugger
+	\item Linter
+	\end{itemize}
+\end{block}
+}
+\end{frame}
+
+
+\begin{frame}{Installation}
+
+\begin{block}{Ist Python schon installiert ?}
+	\begin{itemize}
+		\item Öffne ein Terminal/die Eingabeaufforderung
+		\item Gib ein \mintinline{bash}{python --version}
+		\item oder alternativ \mintinline{bash}{python3 --version}
+		\item Erhältst Du die Antwort \mintinline{bash}{Python} und eine Zahl $\geq 3.6$, dann ist alles fein
+		\item Falls nicht: Installiere Python!
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Installation}
+\begin{block}{Installation}
+\begin{enumerate}
+	\item Gehe auf https://www.python.org/downloads/
+	\item Klicke den Button "Download Python 3.9.3."
+	\item Führe die Installationsdatei aus
+	\item Falls Du gefragt wirst, bestätige, dass Python zum PATH hinzugefügt wird
+	\item Eventuell muss der Rechner neu gestartet werden
+\end{enumerate}	
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Cross-Check}
+\vspace{2pt}
+Gib \mintinline{bash}{python} (Win) oder \mintinline{bash}{python3} (Mac) im \textit{Terminal} ein.
+Du solltest etwa folgendes sehen:  
+\vspace{12pt}
+
+\texttt{Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+	Type "help", "copyright", "credits"{} or "license"{} for more information.}
+
+\texttt{>{}>{}>}
+\end{block}
+\begin{block}{}
+Jetzt bist Du im \textit{interactive mode} von Python. Hier kannst Du einzelne Codezeilen eingeben und mittels \mintinline{bash}{Enter} ausführen. 
+Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und bestätige mit der \mintinline{bash}{Enter}-Taste. 	
+\end{block}
+\end{frame}
+
+
+%\begin{standout}
+%	Erste Schritte im Interactive Mode\\
+%\end{standout}
+\section{Erste Schritte im Interactive Mode}
+
+
+\begin{frame}
+\begin{block}{Versuche folgende Kommandos}	
+	\begin{itemize}
+		\item \mintinline{python}{3 + 4}
+		\item \mintinline{python}{2 - 7}
+		\item \mintinline{python}{"Hello" + "Python"}
+	\end{itemize}
+\end{block}	
+\end{frame}
+
+\begin{frame}{Übung}
+\uncover<+->{\begin{block}{Was machen die folgenden \textit{Operatoren}?}
+	\begin{itemize}
+		\item \mintinline[style=bw]{python}{+}
+		\item \mintinline[style=bw]{python}{-}
+		\item \mintinline[style=bw]{python}{*}
+		\item \mintinline[style=bw]{python}{/}
+		\item \mintinline[style=bw]{python}{**}
+	\end{itemize}
+\end{block}}
+\uncover<+->{\begin{block}{Und diese?}
+\begin{itemize}
+		\item \%
+		\item \mintinline[style=bw]{python}{//}
+		\item \mintinline[style=bw]{python}{==}
+		\item \mintinline[style=bw]{python}{<=}
+		\item \mintinline[style=bw]{python}{<}
+\end{itemize}
+\end{block}}
+
+\end{frame}
+
+\begin{frame}{Übung}
+	\begin{block}{Wie rechnet Python?}
+		\begin{itemize}
+			\item Wird Punkt-vor-Strich berücksichtigt?
+			\item Kann man mit Klammern die Reihenfolge beeinflussen?
+			\item Was ist der Unterschied zwischen \mintinline{python}{10/5} und \mintinline{python}{10//5} ?
+			\item Was bedeutet das Kommando \mintinline{python}{_}? 
+			\item Wie kann man Zwischenergebnisse in Variablen speichern?
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Variablen}
+
+\begin{frame}
+\uncover<+->{\begin{block}{}
+		Jeder Wert in Python kann in einer Variable gespeichert werden: 
+		
+		\mintinline{python}{my_variable = 3}
+\end{block}}
+
+\uncover<+->{\begin{block}{}
+		Die Zuweisung darf auch das Ergebnis einer Berechnung sein: 
+		
+		\mintinline{python}{my_new_variable = 3 + 5}
+\end{block}}
+\uncover<+->{\begin{block}{}
+		Die Zuweisung darf auch weitere Variablen enthalten: 
+		
+		\mintinline{python}{my_brand_new_variable = my_variable + my_new_variable }
+\end{block}}
+
+\uncover<+->{\begin{block}{}
+	Man darf auch Kettenzuweisungen machen: 
+	
+	\mintinline{python}{a = b = c = 100 }
+\end{block}}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Erlaubte Variablenname}
+\begin{itemize}
+	\item Beliebige Länge
+	\item Bestehend aus Buchstaben (ASCII, klein/groß), Ziffern und Unterstrichen
+	\item Der Name darf nicht mit einer Ziffer starten
+	\item Schlüsselwörter sind nicht erlaubt
+\end{itemize} 
+\end{block}
+\vspace{12pt}
+\begin{block}{Liste der Schlüsselwörter}
+	\texttt{
+	\begin{columns}[T,onlytextwidth]
+		\column{0.2\textwidth}
+		False\\ 	await\\ 	else\\ 	import\\ 	pass\\ assert \\	del\\ 	
+		\column{0.2\textwidth}
+		None \\	break \\	except \\ 	in \\	raise \\ global \\	not \\	 
+		\column{0.2\textwidth}
+		True \\	class \\ 	finally \\ 	is \\	return \\ with \\ async 
+		\column{0.2\textwidth}
+		and \\	continue \\ 	for \\	lambda \\	try \\ 	elif  \\	if  \\
+		\column{0.2\textwidth}
+		as \\ 	def \\ 	from  \\	nonlocal \\	while \\ 	or \\ 	yield
+	\end{columns}
+}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{exampleblock}{Style-Guide Variablennamen}
+	\begin{itemize}
+		\item Immer englisch
+		\item Nur Kleinbuchstaben
+		\item Möglichst aussdrucksstarke Namen verwenden
+		\item Keine Angst vor langen Namen 
+		\item Namen, die aus mehreren Worten bestehen, mit Unterstrich trennen (\textit{snake-case})
+	\end{itemize}
+	
+	z.B. \mintinline{python}{students_in_this_room}, \mintinline{python}{number_of_unpaid_bills}
+\end{exampleblock}
+
+\end{frame}
+
+
+\section{Datentypen}
+
+\begin{frame}
+\begin{block}{}
+	Jeder Wert in Python hat einen \textit{Datentyp}. Es gibt folgende \textit{primitive} Typen in Python.
+	\begin{itemize}
+		\item \mintinline{python}{int}  Integer (ganze Zahlen)
+		\item \mintinline{python}{float} Float (Dezimalzahlen)
+		\item \mintinline{python}{str}  String (Zeichenketten)
+		\item \mintinline{python}{bool} Boolean (Wahrheitswerte)
+		\item \mintinline[style=bw]{python}{None} (Typ des leeren Werts)
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\metroset{block=fill}
+
+\begin{block}{Integer}
+Ganze Zahlen wie z.B. \mintinline{python}{1}, \mintinline{python}{-1}, \mintinline{python}{0}. Nicht aber 
+\mintinline{python}{2.0} oder \mintinline{python}{0.0}. 	
+\end{block}
+\vspace{12pt}
+\begin{block}{Float}
+Fließkommazahlen, z.B. \mintinline{python}{3.1415925}. Achtung: Bei Float-Berechnungen können schnell Rundungsfehler auftreten: Was ergibt z.B. \mintinline{python}{1.2 - 1.0} ? 
+\end{block}
+\end{frame}
+
+\begin{frame}
+\metroset{block=fill}
+\begin{block}{String}
+Strings müssen in Anführungszeichen eingeschlossen werden. Dabei ist es fast egal, ob einfache, zweifache oder dreifache. Die Ausdrücke \mintinline{python}{'hello'}, \mintinline{python}{"Hello"} und \mintinline{python}{"""Hello"""} sind (fast) äquivalent. Strings können auch Steuerzeichen, wie Zeilenumbrüche enthalten: z.B. \mintinline{python}{"Hello\n"} 
+\end{block} 
+
+\vspace{12pt}
+\begin{block}{Boolean}
+Booleans können nur die Werte \mintinline{python}{True} und \mintinline{python}{False} haben. Sie entstehen in der Regel, wenn man Fragen im Programm stellt (z.B. \py{3 < 4} oder \py{1 == 2}).   	
+\end{block}
+\end{frame}
+
+\begin{frame}
+\metroset{block=fill}
+\begin{block}{Woher weiß ich, welchen Typ eine Variable hat?}
+	\vspace{2pt}
+Mit der Funktion \py{type()} lässt sich der Typ bestimmen, z.B. \py{type(3.2)}.  	
+\end{block}
+\vspace{12pt}
+\begin{block}{Wie lassen sich Typen umwandeln?}
+	\vspace{2pt}
+	\textbf{Implizit}\\
+	Bei manchen Operationen nimmt Python automatisch eine Typumwandlung vor. z.B. \py{1+2.0} ergibt \py{3.0}	\\ \\
+	\textbf{Explizit}\\
+	Die Funktionen \py{int()}, \py{float()}, \py{str()} und \py{bool()} führen jeweils eine Typumwandlung durch (sofern möglich). Beispiele: 
+	\begin{itemize}
+		\item \py{int(2.0)} ergibt \py{2} 
+		\item \py{float(2)} ergibt \py{2.0} 
+		\item \py{int("3")} ergibt \py{3}
+	\end{itemize} 
+\end{block}
+
+
+\end{frame}
+
+
+\begin{frame}{Übung}
+
+\begin{block}{Versuche die Fragen erst ohne Python zu beantworten, überprüfe Deine Vermutung}
+	\begin{itemize}
+		\item Welchen Datentyp hat das Ergebnis von \py{3 - 1.2} ?
+		\item Was ist das Ergebnis von \py{"2" + 1} ? 
+		\item Sind die beiden Werte \py{0} und \py{"0"} gleich? 
+		\item Sind die beiden Werte \py{2} und \py{True} gleich? 
+		\item Sind die beiden Werte \py{bool(2)} und \py{True} gleich? 
+		\item Sind die beiden Werte \py{1} und \py{True} gleich? 
+	\end{itemize}
+\end{block}
+
+
+\end{frame}
+
+
+\section{Operatoren}
+
+\begin{frame}
+\begin{block}{Die wichtigsten Operatoren}
+	\begin{itemize}
+		\item \pybw{+} (Addition oder Zusammenkleben von Strings)
+		\item \pybw{-} (Subtraktion)
+		\item \pybw{*} (Multiplikation)
+		\item \pybw{/} (Division, ergibt immer ein Wert vom Typ \pybw{float})
+		\item \pybw{**} (Potenzierung)
+			\item \% (\textit{modulo-Operator}: Rest bei ganzzahliger Division)
+		\item \pybw{//} (Division und Abrunden, ergibt immer ein Wert vom Typ \pybw{int})
+		\item \pybw{==} (Vergleichsoperator, ergibt immer ein Wert vom Typ \pybw{bool})
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Präzedenz (oben höchste, unten niedrigste)}
+	\begin{enumerate}
+		\item Klammern
+		\item \pybw{**}
+		\item \pybw{*}, \pybw{/}, \pybw{//}, \%
+		\item \pybw{+},\pybw{-}
+	\end{enumerate}	
+Operatoren gleichen Rangs werden von links nach rechts abgearbeitet (außer Potenzierung). 
+\end{block}
+\end{frame}
+
+\begin{fragile}[]
+	\begin{block}{Kombinierte Zuweisung}
+		\vspace{2pt}
+		Oft möchte man eine gegebene Variable neu zuweisen: 
+		\begin{minted}{python}
+		counter = 1
+		counter = counter + 1 	# counter = 2
+		\end{minted}
+	Dies lässt sich auch kurz schreiben als 
+		\begin{minted}{python}
+	counter = 1
+	counter += 1 	# counter = 2
+	\end{minted}
+	Analog sind die Operatoren \py{-=}, \py{*=}, \py{/=}, etc. definiert. 
+	\end{block}
+	
+	
+	\end{fragile}
+
+
+
+\section{Input/Output -- Basics}
+
+\begin{fragile}[]
+
+\begin{block}{Output}
+	\vspace{2pt}
+	Um einen String auf der Konsole auszugeben, verwende die Funktion \py{print()}. 
+	Zum Beispiel \py{print("Hello there")}. 
+	
+	Es können auch Variablen eingesetzt werden: 
+	\begin{minted}{python}
+	message = "Hello there"
+	print(message) # Hello there
+	\end{minted}
+	
+	\end{block}
+	
+\end{fragile}
+
+\begin{fragile}[]
+	
+\begin{block}{String Interpolation}
+\vspace{2pt}
+Um Variablenwerte innerhalb eines Strings auszugeben, verwenden wir die String-Interpolation-Syntax
+\begin{minted}{python}
+my_value = 5
+print(f"The variable my_value has the value {my_value}")
+# The variable my_value has the value 5
+\end{minted}
+
+Das geht auch als \textit{inline expression}: 
+\begin{minted}{python}
+print(f"The sum of 1 and 2 is {1+2}")
+# The sum of 1 and 2 is 3
+\end{minted}
+
+\end{block}
+	
+\end{fragile}
+
+\begin{fragile}
+\begin{block}{Output}
+	\vspace{2pt}
+Um einen String vom User einzulesen, verwende die Funktion \py{input()}:
+\begin{minted}{python}
+age = input("How old are you?")
+print(f"I am {age} years old")
+\end{minted}
+\end{block}
+
+\begin{alertblock}{Achtung}
+	\vspace{2pt}
+Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen eingelesen werden. Gegebenenfalls muss das Ergebnis mittels \py{int()} oder \py{float()} in den gewünschten Typ umgewandelt werden. 	
+\end{alertblock}
+
+\end{fragile}
+
+\section{Erste Schritte im Script Mode}
+\begin{frame}
+\begin{block}{Script Mode}
+	\vspace{2pt}
+	Sobald man mehrere zusammenhängende Zeilen hat, wird Pythons \textit{interactive mode} sehr unübersichtlich. Daher gibt es auch die Möglichkeit, alle Programmzeilen in eine Text-Datei zu schreiben und diese gebündelt auszuführen.   
+\end{block}
+
+\end{frame}
+\begin{fragile}[]
+	\begin{exampleblock}{Ein erstes Beispiel}
+		\begin{minted}{python}
+		name = input("What is your name?")
+		age = input("What is your age?")
+		print(f"Hello {name}, you are {age} years old") 
+		\end{minted}
+		
+		Speichere diesen Code in der Datei \py{my_script.py} ab. 
+		
+		Führe danach in diesem Ordner das Kommando 
+		\pybw{python my_script.py} aus. 
+	\end{exampleblock}
+\end{fragile}
+
+
+
+\end{document}
+
+
+
+
+
+
