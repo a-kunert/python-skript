@@ -5,6 +5,8 @@
 
 \newcommand{\py}[1]{\mintinline{python}{#1}}
 \newcommand{\pybw}[1]{\mintinline[style=bw]{python}{#1}}
+\newcommand{\bash}[1]{\mintinline{bash}{#1}}
+
 
 \begin{document}
 \input{initialization.tex}
@@ -13,38 +15,50 @@
 \section{Grundlegendes}
 
 \begin{frame}
-\begin{block}{Warum Python?}
-	\begin{itemize}
-	\item Einfaches Setup
-	\item Einstiegsfreundliche Syntax
-	\item Python ist eine Hochsprache
-	\item Python muss nicht kompiliert, sondern nur interpretiert werden
-	\item Großes \textit{ecosystem}
-	\item Python ist extrem vielseitig
-	\end{itemize}
-\end{block}
+	\begin{block}{Ablauf des Kurses}
+		\begin{itemize}
+			\item Kommunikation über Slack 
+			\item Jede Woche ein Aufgabenblatt $\rightarrow$ Besprechung in der nächsten Woche
+			\item Mischung aus Vortrag, Live-Coding und Präsenzübungen
+			\item Download und Kollaboration über Github
+			\item Im Idealfall: Mehr Praxis statt Erklärungen
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}
-
-\begin{block}{Ablauf des Kurses}
-	\begin{itemize}
-	\item Kommunikation über Slack 
-	\item Jede Woche ein Aufgabenblatt $\rightarrow$ Besprechung in der nächsten Woche
-	\item Download und Kollaboration über Github
-	\item Mischung aus Vortrag, Live-Coding und Präsenzübungen
-	\end{itemize}
-\end{block}
+	\begin{block}{Warum Python?}
+		\begin{itemize}
+			\item Einfaches Setup
+			\item Einstiegsfreundliche Syntax
+			\item Python ist eine Hochsprache
+			\item Python muss nicht kompiliert, sondern nur interpretiert werden
+			\item Großes \textit{ecosystem}
+			\item Python ist extrem vielseitig
+		\end{itemize}
+	\end{block}
 \end{frame}
+
+\begin{frame}
+	\begin{block}{Typische Einsatzbereiche}
+		\begin{itemize}
+		\item Webentwicklung
+		\item Webscraping
+		\item Datenanalyse
+		\item Automatisierung
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
 
 \begin{frame}{Was wird benötigt}
 \uncover<+->{
 \metroset{block=fill}
 \begin{block}{Am Anfang}
 \begin{itemize}
-	\item Texteditor
 	\item Compiler/Interpreter
-	\item Google
+	\item Texteditor
 \end{itemize}
 \end{block}
 }
@@ -52,11 +66,12 @@
 \metroset{block=fill}	
 \begin{block}{Später}
 	\begin{itemize}
+	\item Google
 	\item Integrierte Entwicklungsumgebung (IDE)
 	\item Versionskontrolle (VCS)
 	\item Virtueller Maschinen
-	\item Debugger
-	\item Linter
+	\item Datenbanken
+	\item Grafikbearbeitung
 	\end{itemize}
 \end{block}
 }
@@ -68,9 +83,9 @@
 \begin{block}{Ist Python schon installiert ?}
 	\begin{itemize}
 		\item Öffne ein Terminal/die Eingabeaufforderung
-		\item Gib ein \mintinline{bash}{python --version}
-		\item oder alternativ \mintinline{bash}{python3 --version}
-		\item Erhältst Du die Antwort \mintinline{bash}{Python} und eine Zahl $\geq 3.6$, dann ist alles fein
+		\item Gib ein \bash{python --version}
+		\item oder alternativ \bash{python3 --version}
+		\item Erhältst Du die Antwort \bash{Python} und eine Zahl $\geq 3.6$, dann ist alles fein
 		\item Falls nicht: Installiere Python!
 	\end{itemize}
 \end{block}
@@ -87,12 +102,20 @@
 	\item Eventuell muss der Rechner neu gestartet werden
 \end{enumerate}	
 \end{block}
+
+\begin{alertblock}{Achtung bei Windows}
+\vspace{2pt}
+Python muss zum PATH hinzugefügt werden. 
+
+\includegraphics[width=0.65\textwidth]{python_path.jpg}
+\end{alertblock}
+
 \end{frame}
 
 \begin{frame}
 \begin{block}{Cross-Check}
 \vspace{2pt}
-Gib \mintinline{bash}{python} (Win) oder \mintinline{bash}{python3} (Mac) im \textit{Terminal} ein.
+Gib \bash{python} (Win) oder \bash{python3} (Mac) im \textit{Terminal} ein.
 Du solltest etwa folgendes sehen:  
 \vspace{12pt}
 
@@ -102,8 +125,8 @@ Du solltest etwa folgendes sehen:
 \texttt{>{}>{}>}
 \end{block}
 \begin{block}{}
-Jetzt bist Du im \textit{interactive mode} von Python. Hier kannst Du einzelne Codezeilen eingeben und mittels \mintinline{bash}{Enter} ausführen. 
-Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und bestätige mit der \mintinline{bash}{Enter}-Taste. 	
+Jetzt bist Du im \textit{interactive mode} (REPL) von Python. Hier kannst Du einzelne Codezeilen eingeben und mittels \bash{Enter} ausführen. 
+Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der \bash{Enter}-Taste. 	
 \end{block}
 \end{frame}
 
@@ -111,36 +134,38 @@ Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und be
 %\begin{standout}
 %	Erste Schritte im Interactive Mode\\
 %\end{standout}
-\section{Erste Schritte im Interactive Mode}
+\section{Erste Schritte im REPL \\ \footnotesize REPL (Read-Evaluate-Print-Loop)}
 
 
 \begin{frame}
-\begin{block}{Versuche folgende Kommandos}	
+\begin{block}{Probier mal folgende Kommandos aus}	
 	\begin{itemize}
-		\item \mintinline{python}{3 + 4}
-		\item \mintinline{python}{2 - 7}
-		\item \mintinline{python}{"Hello" + "Python"}
+		\item \py{3 + 4}
+		\item \py{2 - 7}
+		\item \py{"Hello" + "Python"}
 	\end{itemize}
 \end{block}	
 \end{frame}
 
+
+
 \begin{frame}{Übung}
 \uncover<+->{\begin{block}{Was machen die folgenden \textit{Operatoren}?}
 	\begin{itemize}
-		\item \mintinline[style=bw]{python}{+}
-		\item \mintinline[style=bw]{python}{-}
-		\item \mintinline[style=bw]{python}{*}
-		\item \mintinline[style=bw]{python}{/}
-		\item \mintinline[style=bw]{python}{**}
+		\item \pybw{+}
+		\item \pybw{-}
+		\item \pybw{*}
+		\item \pybw{/}
+		\item \pybw{**}
 	\end{itemize}
 \end{block}}
 \uncover<+->{\begin{block}{Und diese?}
 \begin{itemize}
 		\item \%
-		\item \mintinline[style=bw]{python}{//}
-		\item \mintinline[style=bw]{python}{==}
-		\item \mintinline[style=bw]{python}{<=}
-		\item \mintinline[style=bw]{python}{<}
+		\item \pybw{//}
+		\item \pybw{==}
+		\item \pybw{<=}
+		\item \pybw{<}
 \end{itemize}
 \end{block}}
 
@@ -151,8 +176,8 @@ Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und be
 		\begin{itemize}
 			\item Wird Punkt-vor-Strich berücksichtigt?
 			\item Kann man mit Klammern die Reihenfolge beeinflussen?
-			\item Was ist der Unterschied zwischen \mintinline{python}{10/5} und \mintinline{python}{10//5} ?
-			\item Was bedeutet das Kommando \mintinline{python}{_}? 
+			\item Was ist der Unterschied zwischen \py{10/5} und \py{10//5} ?
+			\item Was bedeutet das Kommando \py{_}? 
 			\item Wie kann man Zwischenergebnisse in Variablen speichern?
 		\end{itemize}
 	\end{block}
@@ -164,39 +189,40 @@ Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und be
 \uncover<+->{\begin{block}{}
 		Jeder Wert in Python kann in einer Variable gespeichert werden: 
 		
-		\mintinline{python}{my_variable = 3}
+		\py{my_variable = 3}
 \end{block}}
 
 \uncover<+->{\begin{block}{}
 		Die Zuweisung darf auch das Ergebnis einer Berechnung sein: 
 		
-		\mintinline{python}{my_new_variable = 3 + 5}
+		\py{my_new_variable = 3 + 5}
 \end{block}}
 \uncover<+->{\begin{block}{}
 		Die Zuweisung darf auch weitere Variablen enthalten: 
 		
-		\mintinline{python}{my_brand_new_variable = my_variable + my_new_variable }
+		\py{my_brand_new_variable = my_variable + my_new_variable }
 \end{block}}
 
 \uncover<+->{\begin{block}{}
 	Man darf auch Kettenzuweisungen machen: 
 	
-	\mintinline{python}{a = b = c = 100 }
+	\py{a = b = c = 100 }
 \end{block}}
 \end{frame}
 
 
 \begin{frame}
-\begin{block}{Erlaubte Variablenname}
-\begin{itemize}
-	\item Beliebige Länge
-	\item Bestehend aus Buchstaben (ASCII, klein/groß), Ziffern und Unterstrichen
+\uncover<+->{\begin{block}{Gültige Variablennamen}
+\begin{itemize}[<+->]
+	\item Erlaubt sind Buchstaben (nur ASCII), Ziffern und Unterstriche
 	\item Der Name darf nicht mit einer Ziffer starten
+	\item Beliebige Länge 
+	\item Als \textit{regulärer Ausdruck}:  \mintinline{php}{[_a-zA-Z][_0-9a-zA-Z]*}
 	\item Schlüsselwörter sind nicht erlaubt
 \end{itemize} 
-\end{block}
+\end{block}}
 \vspace{12pt}
-\begin{block}{Liste der Schlüsselwörter}
+\uncover<+->{\begin{block}{Liste der Schlüsselwörter}
 	\texttt{
 	\begin{columns}[T,onlytextwidth]
 		\column{0.2\textwidth}
@@ -211,11 +237,11 @@ Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und be
 		as \\ 	def \\ 	from  \\	nonlocal \\	while \\ 	or \\ 	yield
 	\end{columns}
 }
-\end{block}
+\end{block}}
 \end{frame}
 
 \begin{frame}
-\begin{exampleblock}{Style-Guide Variablennamen}
+\uncover<+->{\begin{exampleblock}{Style-Guide Variablennamen}
 	\begin{itemize}
 		\item Immer englisch
 		\item Nur Kleinbuchstaben
@@ -224,8 +250,8 @@ Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und be
 		\item Namen, die aus mehreren Worten bestehen, mit Unterstrich trennen (\textit{snake-case})
 	\end{itemize}
 	
-	z.B. \mintinline{python}{students_in_this_room}, \mintinline{python}{number_of_unpaid_bills}
-\end{exampleblock}
+	\uncover<+->{z.B. \py{students_in_this_room}, \py{number_of_unpaid_bills}}
+\end{exampleblock}}
 
 \end{frame}
 
@@ -233,83 +259,129 @@ Um den interactive mode zu verlassen, gib \mintinline{python}{exit()} ein und be
 \section{Datentypen}
 
 \begin{frame}
-\begin{block}{}
-	Jeder Wert in Python hat einen \textit{Datentyp}. Es gibt folgende \textit{primitive} Typen in Python.
-	\begin{itemize}
-		\item \mintinline{python}{int}  Integer (ganze Zahlen)
-		\item \mintinline{python}{float} Float (Dezimalzahlen)
-		\item \mintinline{python}{str}  String (Zeichenketten)
-		\item \mintinline{python}{bool} Boolean (Wahrheitswerte)
-		\item \mintinline[style=bw]{python}{None} (Typ des leeren Werts)
-	\end{itemize}
-\end{block}
+	\begin{block}{}
+		Jeder Wert in Python hat einen \textit{Datentyp}. Unter anderem gibt es folgende \textit{primitive} Typen in Python.
+		\begin{itemize}
+			\item \py{int}  Integer (ganze Zahlen)
+			\item \py{float} Float (Dezimalzahlen)
+			\item \py{bool} Boolean (Wahrheitswerte)
+			\item \py{str}  String (Zeichenketten)
+			\item \pybw{NoneType} (Typ des leeren Werts \py{None})
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 
 \begin{frame}
-\metroset{block=fill}
-
-\begin{block}{Integer}
-Ganze Zahlen wie z.B. \mintinline{python}{1}, \mintinline{python}{-1}, \mintinline{python}{0}. Nicht aber 
-\mintinline{python}{2.0} oder \mintinline{python}{0.0}. 	
-\end{block}
-\vspace{12pt}
-\begin{block}{Float}
-Fließkommazahlen, z.B. \mintinline{python}{3.1415925}. Achtung: Bei Float-Berechnungen können schnell Rundungsfehler auftreten: Was ergibt z.B. \mintinline{python}{1.2 - 1.0} ? 
-\end{block}
+	\metroset{block=fill}
+	
+	\uncover<+->{\begin{block}{Integer}
+		Ganze Zahlen wie z.B. \py{1}, \py{-1}, \py{0}. Nicht aber 
+		\py{2.0} oder \py{0.0}. 	
+	\end{block}}
+	\vspace{12pt}
+	\uncover<+->{\begin{block}{Float}
+		Fließkommazahlen, z.B. \py{3.1415925}. Achtung: Bei Float-Berechnungen können schnell Rundungsfehler auftreten: Was ergibt z.B. \mintinline{python}{1.2 - 1.0} ? 
+	\end{block}}
+	\vspace{12pt}
+	\uncover<+->{\begin{block}{Boolean}
+		Booleans sind eine Sonderform von \py{int} und können nur die Werte \py{True} (entspricht 1) und \py{False} (entspricht 0) annehmen. Sie entstehen in der Regel, wenn man Fragen im Programm stellt (z.B. \py{3 < 4} oder \py{1 == 2}).   	
+	\end{block}}
 \end{frame}
+
+
 
 \begin{frame}
-\metroset{block=fill}
-\begin{block}{String}
-Strings müssen in Anführungszeichen eingeschlossen werden. Dabei ist es fast egal, ob einfache, zweifache oder dreifache. Die Ausdrücke \mintinline{python}{'hello'}, \mintinline{python}{"Hello"} und \mintinline{python}{"""Hello"""} sind (fast) äquivalent. Strings können auch Steuerzeichen, wie Zeilenumbrüche enthalten: z.B. \mintinline{python}{"Hello\n"} 
-\end{block} 
+	\metroset{block=fill}
+	\uncover<+->{\begin{block}{String}
+		Strings müssen in (ein-, zwei- und dreifache) Anführungszeichen eingeschlossen werden. Die Ausdrücke \py{'hello'}, \py{"Hello"} und \py{"""Hello"""} sind (fast) äquivalent. 
+		
+		Strings können auch Steuerzeichen, wie Zeilenumbrüche enthalten: z.B. \py{"Hello\n"} 
+	\end{block}}
+	\vspace{12pt}
 
-\vspace{12pt}
-\begin{block}{Boolean}
-Booleans können nur die Werte \mintinline{python}{True} und \mintinline{python}{False} haben. Sie entstehen in der Regel, wenn man Fragen im Programm stellt (z.B. \py{3 < 4} oder \py{1 == 2}).   	
-\end{block}
+	\uncover<+->{\begin{block}{Mehrzeilige Strings}
+		Ein \textit{Stringliteral} kann nur innerhalb einer Zeile definiert werden. Soll ein String mehrere Zeilen umfassen, müssen dreifache Anführungszeichen verwendet werden.  
+	\end{block}}
+
+	\end{frame}
+
+	\begin{frame}
+			\metroset{block=fill}
+		\uncover<+->{\begin{block}{Steuerzeichen}
+			Gewisse Kombinationen mit Backslash sind reservierte Steuerzeichen. So bezeichnet beispielsweise \py{\n} einen Zeilenumbruch und \py{\t} ein Tabulatorzeichen. \\
+			Beispiel: \py{"This text\noccupies two lines"}
+		\end{block}}
+			\vspace{12pt}
+		\uncover<+->{\begin{block}{Escaping}
+			Möchte man ein Steuerzeichen nicht ausführen, sondern buchstäblich nehmen. Muss man sie mit einem Backslash \textit{escapen} bzw. maskieren. \\
+			Beispiel: \py{"This text fits in\\n one line"}
+		\end{block}}
+		\vspace{12pt}
+		\uncover<+->{\begin{block}{Raw-Strings}
+				Möchte man alle Steuerzeichen eines Strings ignorieren, kann man ihn als \textit{Raw-String} definieren. \\
+				Beispiel: \py{r"This \n String \t has no control characters"}
+		\end{block}}
+		
+	\end{frame}
+
+	
+	\begin{frame}
+		\metroset{block=fill}
+		\uncover<+->{\begin{block}{Woher weiß ich, welchen Typ eine Variable hat?}
+			\vspace{2pt}
+			Mit der Funktion \py{type()} lässt sich der Typ bestimmen, z.B. \py{type(3.2)}.  	
+		\end{block}}
+		\vspace{12pt}
+		\uncover<+->{\begin{block}{Wie lassen sich Typen umwandeln?}
+			\vspace{2pt}
+			\uncover<+->{\textbf{Implizit}\\
+			Bei manchen Operationen nimmt Python automatisch eine Typumwandlung vor. z.B. \py{1+2.0} ergibt \py{3.0}	\\ \\
+		}
+		\uncover<+->{\textbf{Explizit}\\
+			Die Funktionen \py{int()}, \py{float()}, \py{str()} und \py{bool()} führen jeweils eine Typumwandlung durch (sofern möglich). Beispiele: 
+			\begin{itemize}
+				\item \py{int(2.0)} ergibt \py{2} 
+				\item \py{float(2)} ergibt \py{2.0} 
+				\item \py{int("3")} ergibt \py{3}
+			\end{itemize} 
+		}
+		\end{block}}
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Übung}
+		
+		\begin{block}{Versuche die Fragen erst ohne Python zu beantworten, überprüfe Deine Vermutung}
+			\begin{itemize}
+				\item Welchen Datentyp hat das Ergebnis von \py{3 - 1.0} ?
+				\item Was ist das Ergebnis von \py{"2" + 1} ? 
+				\item Was ist das Ergebnis von \py{"2"} + \py{"2"}? 
+				\item Sind die beiden Werte \py{0} und \py{"0"} gleich? 
+				\item Sind die beiden Werte \py{2} und \py{True} gleich? 
+				\item Sind die beiden Werte \py{bool(2)} und \py{True} gleich? 
+				\item Sind die beiden Werte \py{1} und \py{True} gleich? 
+			\end{itemize}
+		\end{block}
+		
+		
+	\end{frame}
+
+	\begin{frame}{Übung}
+	
+	\begin{block}{Erkläre mit Deinen eigenen Worten}
+		\begin{itemize}
+			\item Nach welcher Regel wandelt \py{int()} ein \py{float} in eine ganze Zahl um? 
+			\item Nach welchen Regeln wandelt \py{bool()} Zahlen und Strings in einen Wahrheitswert um? 
+		\end{itemize}
+	\end{block}
+	
+	
 \end{frame}
 
-\begin{frame}
-\metroset{block=fill}
-\begin{block}{Woher weiß ich, welchen Typ eine Variable hat?}
-	\vspace{2pt}
-Mit der Funktion \py{type()} lässt sich der Typ bestimmen, z.B. \py{type(3.2)}.  	
-\end{block}
-\vspace{12pt}
-\begin{block}{Wie lassen sich Typen umwandeln?}
-	\vspace{2pt}
-	\textbf{Implizit}\\
-	Bei manchen Operationen nimmt Python automatisch eine Typumwandlung vor. z.B. \py{1+2.0} ergibt \py{3.0}	\\ \\
-	\textbf{Explizit}\\
-	Die Funktionen \py{int()}, \py{float()}, \py{str()} und \py{bool()} führen jeweils eine Typumwandlung durch (sofern möglich). Beispiele: 
-	\begin{itemize}
-		\item \py{int(2.0)} ergibt \py{2} 
-		\item \py{float(2)} ergibt \py{2.0} 
-		\item \py{int("3")} ergibt \py{3}
-	\end{itemize} 
-\end{block}
 
-
-\end{frame}
-
-
-\begin{frame}{Übung}
-
-\begin{block}{Versuche die Fragen erst ohne Python zu beantworten, überprüfe Deine Vermutung}
-	\begin{itemize}
-		\item Welchen Datentyp hat das Ergebnis von \py{3 - 1.2} ?
-		\item Was ist das Ergebnis von \py{"2" + 1} ? 
-		\item Sind die beiden Werte \py{0} und \py{"0"} gleich? 
-		\item Sind die beiden Werte \py{2} und \py{True} gleich? 
-		\item Sind die beiden Werte \py{bool(2)} und \py{True} gleich? 
-		\item Sind die beiden Werte \py{1} und \py{True} gleich? 
-	\end{itemize}
-\end{block}
-
-
-\end{frame}
 
 
 \section{Operatoren}
@@ -337,7 +409,11 @@ Mit der Funktion \py{type()} lässt sich der Typ bestimmen, z.B. \py{type(3.2)}.
 		\item \pybw{*}, \pybw{/}, \pybw{//}, \%
 		\item \pybw{+},\pybw{-}
 	\end{enumerate}	
-Operatoren gleichen Rangs werden von links nach rechts abgearbeitet (außer Potenzierung). 
+Operatoren gleichen Rangs werden innerhalb eines Ausdrucks von links nach rechts abgearbeitet. 
+
+\vspace{10pt}
+\textbf{Ausnahmen:}\\
+Potenzierung (\py{**}) und Zuweisung (\py{=}). 
 \end{block}
 \end{frame}
 
@@ -362,7 +438,7 @@ Operatoren gleichen Rangs werden von links nach rechts abgearbeitet (außer Pote
 
 
 
-\section{Input/Output -- Basics}
+\section{Input/Output \\ \footnotesize Teil 1}
 
 \begin{fragile}[]
 
@@ -419,7 +495,7 @@ Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen 
 
 \end{fragile}
 
-\section{Erste Schritte im Script Mode}
+\section{Script Mode}
 \begin{frame}
 \begin{block}{Script Mode}
 	\vspace{2pt}
@@ -440,6 +516,31 @@ Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen 
 		Führe danach in diesem Ordner das Kommando 
 		\pybw{python my_script.py} aus. 
 	\end{exampleblock}
+\end{fragile}
+
+\begin{frame}{Übung}
+	Schreibe ein kurzes Skript, dass Dich nach Deinem Namen, Alter und Adresse fragt. Wenn es alles eingelesen hat, soll es diese Infos in folgender Form auf der Konsole ausgeben: 	
+	
+	\texttt{Hallo Max, schön dass Du da bist. Du bist 21 Jahre alt und wohnst in der Bismarckstraße 12 in Glücksstadt.}
+	
+\end{frame}
+
+
+\begin{fragile}
+	
+	\begin{block}{Kommentare}
+		\vspace{2pt}
+		Alle Zeichen einer Zeile, die hinter einem \texttt{\#} (Hashtag) kommen, werden von Python ignoriert.
+		So lassen sich Kommentare im Quellcode platzieren. 
+	\end{block}
+	\vspace{12pt}
+	\begin{exampleblock}{Beispiel}
+	\begin{minted}{python}
+	print("This line will be printed")
+	# print("This line won't") 
+	\end{minted}
+	\end{exampleblock}
+	
 \end{fragile}
 
 
