@@ -1,0 +1,638 @@
+\section{Zu Beginn \dots}
+
+\begin{frame}
+	\begin{block}{Ablauf des Kurses}
+		\begin{itemize}
+			\item Mischung aus Vortrag, Live-Coding und Präsenzübungen
+			\item Im Idealfall: Mehr Praxis statt Erklärungen
+			\item Jede Woche gibt's ein Aufgabenblatt $\rightarrow$ Besprechung in der nächsten Woche
+			\item Kommunikation über Slack: \texttt{python-kurs.slack.com} (freiwillig)
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Warum Python?}
+		\begin{itemize}
+			\item Einfaches Setup
+			\item Einstiegsfreundliche Syntax
+			\item Python ist eine Hochsprache
+			\item Python muss nicht kompiliert, sondern nur interpretiert werden
+			\item Großes \textit{ecosystem}
+			\item Python ist extrem vielseitig
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Typische Einsatzbereiche}
+		\begin{itemize}
+			\item Webentwicklung
+			\item Webscraping
+			\item Datenanalyse
+			\item Automatisierung
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+	\metroset{block=fill}
+	\uncover<+->{\begin{block}{Was wird benötigt?}
+			\vspace{2pt}
+			\uncover<+->{
+				\textbf{Am Anfang}
+				\begin{itemize}
+					\item Compiler/Interpreter
+					\item Texteditor
+				\end{itemize}
+			}
+			\uncover<+->{
+				\textbf{Später}
+				\begin{itemize}
+					\item Google
+					\item Integrierte Entwicklungsumgebung (IDE)
+					\item Versionskontrolle (VCS)
+					\item Virtueller Maschinen
+					\item Datenbanken
+					\item Grafikbearbeitung
+				\end{itemize}
+			}
+	\end{block}}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Wo findet man Hilfe/Infos?}
+	\vspace{2pt}
+	\begin{itemize}
+		\item Google
+		\item \texttt{stackoverflow.com}
+		\item Youtube (als Tutorials)
+		\item Austausch über Slack 
+		\item \texttt{docs.python.org/3}
+		\item Bücher (z.B. \textit{Python Crashkurs} v. \textsc{Eric Matthes})
+		\item \texttt{mailto: aaron.kunert@salemkolleg.de}
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+\section{Installation von Python}
+
+\begin{frame}
+\begin{block}{Ist Python schon installiert ?}
+	\begin{itemize}
+		\item Öffne ein Terminal/die Eingabeaufforderung
+		\item Gib ein \bash{python --version}
+		\item oder alternativ \bash{python3 --version}
+		\item Erhältst Du die Antwort \bash{Python} und eine Zahl $\geq 3.6$, dann ist alles fein
+		\item Falls nicht: Installiere Python!
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
+\begin{block}{Installation}
+\begin{enumerate}
+	\item Gehe auf https://www.python.org/downloads/
+	\item Klicke den Button "Download Python 3.9.3."
+	\item Führe die Installationsdatei aus
+	\item Falls Du gefragt wirst, bestätige, dass Python zum PATH hinzugefügt wird
+	\item Eventuell muss der Rechner neu gestartet werden
+\end{enumerate}	
+\end{block}
+
+\begin{alertblock}{Achtung bei Windows}
+\vspace{2pt}
+Python muss zum PATH hinzugefügt werden. 
+
+\includegraphics[width=0.65\textwidth]{python_path.jpg}
+\end{alertblock}
+
+\end{frame}
+
+\begin{frame}
+\begin{block}{Cross-Check}
+\vspace{2pt}
+Gib \bash{python} (Win) oder \bash{python3} (Mac) im \textit{Terminal} ein.
+Du solltest etwa folgendes sehen:  
+\vspace{12pt}
+
+\texttt{Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+	Type "help", "copyright", "credits"{} or "license"{} for more information.}
+
+\texttt{>{}>{}>}
+\end{block}
+\begin{block}{}
+Jetzt bist Du im \textit{interactive mode} (REPL) von Python. Hier kannst Du einzelne Codezeilen eingeben und mittels \bash{Enter} ausführen. 
+Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der \bash{Enter}-Taste. 	
+\end{block}
+\end{frame}
+
+
+%\begin{standout}
+%	Erste Schritte im Interactive Mode\\
+%\end{standout}
+\section{Erste Schritte im REPL \\ \footnotesize (Read-Evaluate-Print-Loop)}
+
+
+\begin{frame}
+\begin{block}{Probier mal folgende Kommandos aus}	
+	\begin{itemize}
+		\item \py{3 + 4}
+		\item \py{2 - 7}
+		\item \py{"Hello" + "Python"}
+	\end{itemize}
+\end{block}	
+\end{frame}
+
+
+
+\begin{frame}{Übung}
+\uncover<+->{\begin{block}{Was machen die folgenden \textit{Operatoren}?}
+	\begin{itemize}
+		\item \pybw{+}
+		\item \pybw{-}
+		\item \pybw{*}
+		\item \pybw{/}
+		\item \pybw{**}
+	\end{itemize}
+\end{block}}
+\uncover<+->{\begin{block}{Und diese?}
+\begin{itemize}
+		\item \%
+		\item \pybw{//}
+		\item \pybw{==}
+		\item \pybw{<=}
+		\item \pybw{<}
+\end{itemize}
+\end{block}}
+
+\end{frame}
+
+\begin{frame}{Übung}
+	\begin{block}{Wie rechnet Python?}
+		\begin{itemize}
+			\item Wird Punkt-vor-Strich berücksichtigt?
+			\item Kann man mit Klammern die Reihenfolge beeinflussen?
+			\item Was ist der Unterschied zwischen \py{10/5} und \py{10//5} ?
+			\item Was bedeutet das Kommando \py{_}? 
+			\item Wie kann man Zwischenergebnisse in Variablen speichern?
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\section{Variablen}
+
+\begin{frame}
+\uncover<+->{\begin{block}{}
+		Jeder Wert in Python kann in einer Variable gespeichert werden: 
+		
+		\py{my_variable = 3}
+\end{block}}
+
+\uncover<+->{\begin{block}{}
+		Die Zuweisung darf auch das Ergebnis einer Berechnung sein: 
+		
+		\py{my_new_variable = 3 + 5}
+\end{block}}
+\uncover<+->{\begin{block}{}
+		Die Zuweisung darf auch weitere Variablen enthalten: 
+		
+		\py{my_brand_new_variable = my_variable + my_new_variable }
+\end{block}}
+
+\uncover<+->{\begin{block}{}
+	Man darf auch Kettenzuweisungen machen: 
+	
+	\py{a = b = c = 100 }
+\end{block}}
+\end{frame}
+
+
+\begin{frame}
+\uncover<+->{\begin{block}{Gültige Variablennamen}
+\begin{itemize}[<+->]
+	\item Erlaubt sind Buchstaben (nur ASCII), Ziffern und Unterstriche
+	\item Der Name darf nicht mit einer Ziffer starten
+	\item Beliebige Länge 
+	\item Als \textit{regulärer Ausdruck}:  \mintinline{php}{[_a-zA-Z][_0-9a-zA-Z]*}
+	\item Schlüsselwörter sind nicht erlaubt
+\end{itemize} 
+\end{block}}
+\vspace{12pt}
+\uncover<+->{\begin{block}{Liste der Schlüsselwörter}
+	\texttt{
+	\begin{columns}[T,onlytextwidth]
+		\column{0.2\textwidth}
+		False\\ 	await\\ 	else\\ 	import\\ 	pass\\ assert \\	del\\ 	
+		\column{0.2\textwidth}
+		None \\	break \\	except \\ 	in \\	raise \\ global \\	not \\	 
+		\column{0.2\textwidth}
+		True \\	class \\ 	finally \\ 	is \\	return \\ with \\ async 
+		\column{0.2\textwidth}
+		and \\	continue \\ 	for \\	lambda \\	try \\ 	elif  \\	if  \\
+		\column{0.2\textwidth}
+		as \\ 	def \\ 	from  \\	nonlocal \\	while \\ 	or \\ 	yield
+	\end{columns}
+}
+\end{block}}
+\end{frame}
+
+
+\begin{frame}
+\uncover<+->{\begin{exampleblock}{Style-Guide Variablennamen}
+	\begin{itemize}
+		\item Immer englisch
+		\item Nur Kleinbuchstaben
+		\item Möglichst aussdrucksstarke Namen verwenden
+		\item Keine Angst vor langen Namen 
+		\item Namen, die aus mehreren Worten bestehen, mit Unterstrich trennen (\textit{snake-case})
+	\end{itemize}
+	
+	\uncover<+->{z.B. \py{students_in_this_room}, \py{number_of_unpaid_bills}}
+\end{exampleblock}}
+
+\end{frame}
+
+\begin{frame}{Übung}
+	
+	\begin{block}{Probier's aus!}
+		\begin{itemize}
+			\item Welchen Wert hat eine Variable, wenn man sie nicht definiert hat? 
+			\item Was passiert, wenn man eine Variable definiert, die schonmal verwendet wurde?
+			\item Wie kann man eine Variable mit Wert \py{3} um \py{1} vergrößern?
+		\end{itemize}	
+	\end{block}
+	
+\end{frame}
+
+
+\section{Datentypen}
+
+\begin{frame}
+	\begin{block}{}
+		Jeder Wert in Python hat einen \textit{Datentyp}. Unter anderem gibt es folgende \textit{primitive} Typen in Python.
+		\begin{itemize}
+			\item \py{int}  Integer (ganze Zahlen)
+			\item \py{float} Float (Dezimalzahlen)
+			\item \py{bool} Boolean (Wahrheitswerte)
+			\item \py{str}  String (Zeichenketten)
+			\item \pybw{NoneType} (Typ des leeren Werts \py{None})
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+\begin{frame}
+	\metroset{block=fill}
+	
+	\uncover<+->{\begin{block}{Integer}
+		Ganze Zahlen wie z.B. \py{1}, \py{-1}, \py{0}. Nicht aber 
+		\py{2.0} oder \py{0.0}. 	
+	\end{block}}
+	\vspace{12pt}
+	\uncover<+->{\begin{block}{Float}
+		Fließkommazahlen, z.B. \py{3.1415925}. Achtung: Bei Float-Berechnungen können schnell Rundungsfehler auftreten: Was ergibt z.B. \mintinline{python}{1.2 - 1.0} ? 
+	\end{block}}
+	\vspace{12pt}
+	\uncover<+->{\begin{block}{Boolean}
+		Booleans sind eine Sonderform von \py{int} und können nur die Werte \py{True} (entspricht 1) und \py{False} (entspricht 0) annehmen. Sie entstehen in der Regel, wenn man Fragen im Programm stellt (z.B. \py{3 < 4} oder \py{1 == 2}).   	
+	\end{block}}
+\end{frame}
+
+
+
+\begin{frame}
+	\metroset{block=fill}
+	\uncover<+->{\begin{block}{String}
+		Strings müssen in (ein-, zwei- und dreifache) Anführungszeichen eingeschlossen werden. Die Ausdrücke \py{'hello'}, \py{"Hello"} und \py{"""Hello"""} sind (fast) äquivalent. 
+		
+		Strings können auch Steuerzeichen, wie Zeilenumbrüche enthalten: z.B. \py{"Hello\n"} 
+	\end{block}}
+	\vspace{12pt}
+
+	\uncover<+->{\begin{block}{Mehrzeilige Strings}
+		Ein \textit{Stringliteral} kann nur innerhalb einer Zeile definiert werden. Soll ein String mehrere Zeilen umfassen, müssen dreifache Anführungszeichen verwendet werden.  
+	\end{block}}
+
+	\end{frame}
+
+	\begin{frame}
+			\metroset{block=fill}
+		\uncover<+->{\begin{block}{Steuerzeichen}
+			Gewisse Kombinationen mit Backslash sind reservierte Steuerzeichen. So bezeichnet beispielsweise \py{\n} einen Zeilenumbruch und \py{\t} ein Tabulatorzeichen. \\
+			Beispiel: \py{"This text\noccupies two lines"}
+		\end{block}}
+			\vspace{12pt}
+		\uncover<+->{\begin{block}{Escaping}
+			Möchte man ein Steuerzeichen nicht ausführen, sondern buchstäblich nehmen. Muss man sie mit einem Backslash \textit{escapen} bzw. maskieren. \\
+			Beispiel: \py{"This text fits in\\n one line"}
+		\end{block}}
+		\vspace{12pt}
+		\uncover<+->{\begin{block}{Raw-Strings}
+				Möchte man alle Steuerzeichen eines Strings ignorieren, kann man ihn als \textit{Raw-String} definieren. \\
+				Beispiel: \py{r"This \n String \t has no control characters"}
+		\end{block}}
+		
+	\end{frame}
+
+	
+	\begin{frame}
+		\metroset{block=fill}
+		\uncover<+->{\begin{block}{Woher weiß ich, welchen Typ eine Variable hat?}
+			\vspace{2pt}
+			Mit der Funktion \py{type()} lässt sich der Typ bestimmen, z.B. \py{type(3.2)}.  	
+		\end{block}}
+		\vspace{12pt}
+		\uncover<+->{\begin{block}{Wie lassen sich Typen umwandeln?}
+			\vspace{2pt}
+			\uncover<+->{\textbf{Implizit}\\
+			Bei manchen Operationen nimmt Python automatisch eine Typumwandlung vor. z.B. \py{1+2.0} ergibt \py{3.0}	\\ \\
+		}
+		\uncover<+->{\textbf{Explizit}\\
+			Die Funktionen \py{int()}, \py{float()}, \py{str()} und \py{bool()} führen jeweils eine Typumwandlung durch (sofern möglich). Beispiele: 
+			\begin{itemize}
+				\item \py{int(2.0)} ergibt \py{2} 
+				\item \py{float(2)} ergibt \py{2.0} 
+				\item \py{int("3")} ergibt \py{3}
+			\end{itemize} 
+		}
+		\end{block}}
+		
+		
+	\end{frame}
+	
+	
+	\begin{frame}{Übung}
+		
+		\begin{block}{Versuche die Fragen erst ohne Python zu beantworten, überprüfe Deine Vermutung}
+			\begin{itemize}
+				\item Welchen Datentyp hat das Ergebnis von \py{3 - 1.0} ?
+				\item Was ist das Ergebnis von \py{"2" + 1} ? 
+				\item Was ist das Ergebnis von \py{"2"} + \py{"2"}? 
+				\item Sind die beiden Werte \py{0} und \py{"0"} gleich? 
+				\item Sind die beiden Werte \py{2} und \py{True} gleich? 
+				\item Sind die beiden Werte \py{bool(2)} und \py{True} gleich? 
+				\item Sind die beiden Werte \py{1} und \py{True} gleich? 
+			\end{itemize}
+		\end{block}
+		
+		
+	\end{frame}
+
+	\begin{frame}{Übung}
+	
+	\begin{block}{Erkläre mit Deinen eigenen Worten}
+		\begin{itemize}
+			\item Nach welcher Regel wandelt \py{int()} ein \py{float} in eine ganze Zahl um? 
+			\item Nach welchen Regeln wandelt \py{bool()} Zahlen und Strings in einen Wahrheitswert um? 
+		\end{itemize}
+	\end{block}
+	
+	
+\end{frame}
+
+
+
+
+\section{Operatoren}
+
+\begin{frame}
+\begin{block}{Die wichtigsten Operatoren}
+	\begin{itemize}
+		\item \pybw{+} (Addition oder Zusammenkleben von Strings)
+		\item \pybw{-} (Subtraktion)
+		\item \pybw{*} (Multiplikation)
+		\item \pybw{/} (Division, ergibt immer ein Wert vom Typ \pybw{float})
+		\item \pybw{**} (Potenzierung)
+			\item \% (\textit{modulo-Operator}: Rest bei ganzzahliger Division)
+		\item \pybw{//} (Division und Abrunden, ergibt immer ein Wert vom Typ \pybw{int})
+		\item \pybw{==} (Vergleichsoperator, ergibt immer ein Wert vom Typ \pybw{bool})
+	\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Präzedenz (oben höchste, unten niedrigste)}
+	\begin{enumerate}
+		\item Klammern
+		\item \pybw{**}
+		\item \pybw{*}, \pybw{/}, \pybw{//}, \%
+		\item \pybw{+},\pybw{-}
+	\end{enumerate}	
+Operatoren gleichen Rangs werden innerhalb eines Ausdrucks von links nach rechts abgearbeitet. 
+
+\vspace{10pt}
+\textbf{Ausnahmen:}\\
+Potenzierung (\py{**}) und Zuweisung (\py{=}). 
+\end{block}
+\end{frame}
+
+\begin{fragile}[]
+	\begin{block}{Kombinierte Zuweisung}
+		\vspace{2pt}
+		Oft möchte man eine gegebene Variable neu zuweisen: 
+		\begin{minted}{python}
+		counter = 1
+		counter = counter + 1 	# counter = 2
+		\end{minted}
+	Dies lässt sich auch kurz schreiben als 
+		\begin{minted}{python}
+	counter = 1
+	counter += 1 	# counter = 2
+	\end{minted}
+	Analog sind die Operatoren \py{-=}, \py{*=}, \py{/=}, etc. definiert. 
+	\end{block}
+	
+	
+	\end{fragile}
+
+
+
+\section{Input/Output \\ \footnotesize Teil 1}
+
+\begin{fragile}[]
+
+\begin{block}{Output}
+	\vspace{2pt}
+	Um einen String auf der Konsole auszugeben, verwende die Funktion \py{print()}. 
+	Zum Beispiel \py{print("Hello there")}. 
+	
+	Es können auch Variablen eingesetzt werden: 
+	\begin{minted}{python}
+	message = "Hello there"
+	print(message) # Hello there
+	\end{minted}
+	
+	\end{block}
+	
+\end{fragile}
+
+\begin{fragile}[]
+	
+\begin{block}{String Interpolation}
+\vspace{2pt}
+Um Variablenwerte innerhalb eines Strings auszugeben, verwenden wir die String-Interpolation-Syntax
+\begin{minted}{python}
+my_value = 5
+print(f"The variable my_value has the value {my_value}")
+# The variable my_value has the value 5
+\end{minted}
+
+Das geht auch als \textit{inline expression}: 
+\begin{minted}{python}
+print(f"The sum of 1 and 2 is {1+2}")
+# The sum of 1 and 2 is 3
+\end{minted}
+
+\end{block}
+	
+\end{fragile}
+
+\begin{fragile}
+\begin{block}{Output}
+	\vspace{2pt}
+Um einen String vom User einzulesen, verwende die Funktion \py{input()}:
+\begin{minted}{python}
+age = input("How old are you?")
+print(f"I am {age} years old")
+\end{minted}
+\end{block}
+
+\begin{alertblock}{Achtung}
+	\vspace{2pt}
+Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen eingelesen werden. Gegebenenfalls muss das Ergebnis mittels \py{int()} oder \py{float()} in den gewünschten Typ umgewandelt werden. 	
+\end{alertblock}
+
+\end{fragile}
+
+\section{Script Mode}
+\begin{frame}
+\begin{block}{Script Mode}
+	\vspace{2pt}
+	Sobald man mehrere zusammenhängende Zeilen hat, wird Pythons \textit{interactive mode} sehr unübersichtlich. Daher gibt es auch die Möglichkeit, alle Programmzeilen in eine Text-Datei zu schreiben und diese gebündelt auszuführen.   
+\end{block}
+
+\end{frame}
+\begin{fragile}[]
+	\begin{exampleblock}{Ein erstes Beispiel}
+		\begin{minted}{python}
+		name = input("What is your name?")
+		age = input("What is your age?")
+		print(f"Hello {name}, you are {age} years old") 
+		\end{minted}
+		
+		Speichere diesen Code in der Datei \py{my_script.py} ab. 
+		
+		Führe danach in diesem Ordner das Kommando 
+		\pybw{python my_script.py} aus. 
+	\end{exampleblock}
+\end{fragile}
+
+\begin{frame}{Übung}
+	Schreibe ein kurzes Skript, dass Dich nach Deinem Namen, Alter und Adresse fragt. Wenn es alles eingelesen hat, soll es diese Infos in folgender Form auf der Konsole ausgeben: 	
+	
+	\texttt{Hallo Max, schön dass Du da bist. Du bist 21 Jahre alt und wohnst in der Bismarckstraße 12 in Glücksstadt.}
+	
+\end{frame}
+
+
+\begin{fragile}
+	
+	\begin{block}{Kommentare}
+		\vspace{2pt}
+		Alle Zeichen einer Zeile, die hinter einem \texttt{\#} (Hashtag) kommen, werden von Python ignoriert.
+		So lassen sich Kommentare im Quellcode platzieren. 
+	\end{block}
+	\vspace{12pt}
+	\begin{exampleblock}{Beispiel}
+	\begin{minted}{python}
+	print("This line will be printed")
+	# print("This line won't") 
+	\end{minted}
+	\end{exampleblock}
+	
+\end{fragile}
+
+
+\section{Arbeit mit einer IDE}
+
+\begin{frame}
+	\begin{block}{Integrierte Entwicklungsumgebungen (IDE)}
+		\vspace{2pt}
+	Die Arbeit mit gewöhnlichen Texteditoren ist auf Dauer sehr mühsam. Daher empfiehlt es sich eine IDE zu verwenden. 
+	Das bringt zum Beispiel folgende Vorteile: 
+	\begin{itemize}
+		\item Syntax-Highlighting
+		\item Code-Inspection
+		\item Autocomplete
+		\item Geile Shortcuts
+		\item Code ausführen und debuggen
+	\end{itemize}	
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Installation von PyCharme}
+		\vspace{2pt}
+		\begin{enumerate}
+			\item Gehe auf 
+			\texttt{https://www.jetbrains.com/pycharm/download} \\
+			\item Lade die kostenlose \textit{Community Edition} herunter
+			\item Führe den Installer aus
+			\item Öffne PyCharm
+		\end{enumerate}
+	\end{block}
+	
+	
+	\begin{block}{Wenn alles passt, siehts etwas so aus}
+		\vspace{2pt}
+		\begin{center}
+		\includegraphics[width=0.65\textwidth]{pycharme.jpg}
+		\end{center}
+	\end{block}
+	
+\end{frame}
+
+
+
+\begin{frame}
+	\begin{block}{Installation PyCharme}
+		\vspace{2pt}
+		\begin{enumerate}
+			\item Gehe auf \texttt{Customize > All Settings...}
+			\item Einstellungen synchronisieren
+			\begin{enumerate}
+				\item \texttt{Tools > Settings Repository}
+				\item Unter \textit{Read-only Sources} auf \texttt{+}
+				\item \texttt{https://github.com/a-kunert/ide-settings.git}	eingeben
+				%\item  File > Manage IDE Settings > Sync with Settings Repository > Merge ausführen 
+			\end{enumerate}
+			\item Verknüpfe den Interpreter
+			\begin{enumerate}
+				\item In den Settings auf \texttt{Python Interpreter}
+				\item Falls möglich unter \texttt{Python Interpreter} einen Interpreter wählen. Ansonsten wie folgt: 
+				\item \texttt{Zahnrad > Add}
+				\item \texttt{System Interpreter}
+				\item Dort den Pfad zu Python angeben
+			\end{enumerate}
+			\item Mit dem Button \textit{Apply} alles bestätigen
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{block}{Konfiguration abschließen}
+		\begin{enumerate}
+		\item Lege eine Ordner für den Kurs an
+		\item Öffne diesen Ordner mit \texttt{Projects > Open}
+		\item \texttt{File > Manage IDE Settings > Sync with Settings Repository > Merge} ausführen
+		\item Bei \texttt{File > Settings} unter \texttt{Keymap} die Keymap \textit{Salem-Win/Mac} auswählen. 
+		\item Code in die Datei \texttt{main.py} schreiben
+		\item Mittels grünem Pfeil (oben rechts) Code ausführen
+	\end{enumerate}	
+	\end{block}
+\end{frame}
