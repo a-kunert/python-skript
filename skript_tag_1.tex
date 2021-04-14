@@ -1,12 +1,30 @@
 \section{Zu Beginn \dots}
 
 \begin{frame}
+\begin{block}{Kurze Vorstellungsrunde}
+	\vspace{2pt}
+	Schaffst Du es \emph{in 60 Sekunden} folgende Fragen möglichst knackig und aussagekräftig zu beantworten?
+	\begin{itemize}
+		\item Wer bist Du? 
+		\item Windows, Mac oder Linux?
+		\item Welche Vorkenntnisse hast Du beim Programmieren?  
+		\item Warum hast Du Dich zum Python-Kurs angemeldet? 
+		\item Wann wäre der Kurs für Dich perfekt gelaufen? (Best Case Szenario)
+		\item Wann würdest Du den Kurs nicht weiter besuchen? (Worst Case Szenario)
+	\end{itemize}
+\end{block}
+\end{frame}
+
+
+\begin{frame}
 	\begin{block}{Ablauf des Kurses}
 		\begin{itemize}
 			\item Mischung aus Vortrag, Live-Coding und Präsenzübungen
 			\item Im Idealfall: Mehr Praxis statt Erklärungen
 			\item Jede Woche gibt's ein Aufgabenblatt $\rightarrow$ Besprechung in der nächsten Woche
-			\item Kommunikation über Slack: \texttt{python-kurs.slack.com} (freiwillig)
+			\item Kommunikation über Slack: \texttt{https://bit.ly/3a5W9fE} 
+			%\texttt{python-kurs.slack.com} 
+			(freiwillig)
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -18,8 +36,9 @@
 			\item Einstiegsfreundliche Syntax
 			\item Python ist eine Hochsprache
 			\item Python muss nicht kompiliert, sondern nur interpretiert werden
-			\item Großes \textit{ecosystem}
+			\item Große Community $\rightarrow$ großes \emph{Ecosystem}
 			\item Python ist extrem vielseitig
+			\item Python ist plattformunabhängig
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -27,14 +46,28 @@
 \begin{frame}
 	\begin{block}{Typische Einsatzbereiche}
 		\begin{itemize}
-			\item Webentwicklung
+			\item Automatisierung
 			\item Webscraping
 			\item Datenanalyse
-			\item Automatisierung
+			\item Webentwicklung
 		\end{itemize}
 	\end{block}
 \end{frame}
 
+\begin{frame}
+\begin{block}{Phasen des Lernens einer Programmiersprache}
+	\vspace{2pt}
+	\uncover<+->{
+\begin{enumerate}[<+->]
+	\item Annäherung:  Fokus auf dem Begreifen der Grundkonzepte
+	\item Syntax: Fokus auf der korrekten Anwendung der Syntax
+	\item Funktionalität: Fokus liegt darauf, Problemstellungen \emph{pragmatisch} zu lösen
+	\item Design: Fokus auf les-und wartbaren Code
+	\item Architektur: Fokus auf Strategie, Projekte nachhaltig und erweiterbar umzusetzen 
+\end{enumerate}
+	}
+\end{block}
+\end{frame}
 
 
 \begin{frame}
@@ -45,7 +78,7 @@
 				\textbf{Am Anfang}
 				\begin{itemize}
 					\item Compiler/Interpreter
-					\item Texteditor
+					\item Texteditor (z.B. Mac: Xcode, Windows: Edit)
 				\end{itemize}
 			}
 			\uncover<+->{
@@ -68,7 +101,7 @@
 	\begin{itemize}
 		\item Google
 		\item \texttt{stackoverflow.com}
-		\item Youtube (als Tutorials)
+		\item Youtube (z.B. Tutorials)
 		\item Austausch über Slack 
 		\item \texttt{docs.python.org/3}
 		\item Bücher (z.B. \textit{Python Crashkurs} v. \textsc{Eric Matthes})
@@ -218,7 +251,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 	\item Erlaubt sind Buchstaben (nur ASCII), Ziffern und Unterstriche
 	\item Der Name darf nicht mit einer Ziffer starten
 	\item Beliebige Länge 
-	\item Als \textit{regulärer Ausdruck}:  \mintinline{php}{[_a-zA-Z][_0-9a-zA-Z]*}
+	\item Wer's schon kennt als \emph{regulärer Ausdruck}:  \mintinline{php}{[_a-zA-Z][_0-9a-zA-Z]*}
 	\item Schlüsselwörter sind nicht erlaubt
 \end{itemize} 
 \end{block}}
@@ -245,7 +278,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 \begin{frame}
 \uncover<+->{\begin{exampleblock}{Style-Guide Variablennamen}
 	\begin{itemize}
-		\item Immer englisch
+		\item Englische Wörter
 		\item Nur Kleinbuchstaben
 		\item Möglichst aussdrucksstarke Namen verwenden
 		\item Keine Angst vor langen Namen 
@@ -261,7 +294,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 	
 	\begin{block}{Probier's aus!}
 		\begin{itemize}
-			\item Welchen Wert hat eine Variable, wenn man sie nicht definiert hat? 
+			\item Welchen Wert hat eine Variable, wenn man sie nicht vorher definiert hat? 
 			\item Was passiert, wenn man eine Variable definiert, die schonmal verwendet wurde?
 			\item Wie kann man eine Variable mit Wert \py{3} um \py{1} vergrößern?
 		\end{itemize}	
@@ -295,7 +328,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 	\end{block}}
 	\vspace{12pt}
 	\uncover<+->{\begin{block}{Float}
-		Fließkommazahlen, z.B. \py{3.1415925}. Achtung: Bei Float-Berechnungen können schnell Rundungsfehler auftreten: Was ergibt z.B. \mintinline{python}{1.2 - 1.0} ? 
+		Fließkommazahlen, z.B. \py{3.1415925}. Achtung: Bei Float-Berechnungen können schnell \enquote{Überraschungen} auftreten: Was ergibt z.B. \mintinline{python}{1.2 - 1.0} ? 
 	\end{block}}
 	\vspace{12pt}
 	\uncover<+->{\begin{block}{Boolean}
@@ -308,9 +341,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 \begin{frame}
 	\metroset{block=fill}
 	\uncover<+->{\begin{block}{String}
-		Strings müssen in (ein-, zwei- und dreifache) Anführungszeichen eingeschlossen werden. Die Ausdrücke \py{'hello'}, \py{"Hello"} und \py{"""Hello"""} sind (fast) äquivalent. 
-		
-		Strings können auch Steuerzeichen, wie Zeilenumbrüche enthalten: z.B. \py{"Hello\n"} 
+		Strings sind beliebige Zeichenketten und müssen in (ein-, zwei- oder dreifache) Anführungszeichen eingeschlossen werden. Die Ausdrücke \py{'hello'}, \py{"Hello"} und \py{"""Hello"""} sind (fast) äquivalent. 
 	\end{block}}
 	\vspace{12pt}
 
@@ -324,7 +355,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 			\metroset{block=fill}
 		\uncover<+->{\begin{block}{Steuerzeichen}
 			Gewisse Kombinationen mit Backslash sind reservierte Steuerzeichen. So bezeichnet beispielsweise \py{\n} einen Zeilenumbruch und \py{\t} ein Tabulatorzeichen. \\
-			Beispiel: \py{"This text\noccupies two lines"}
+			Beispiel: \py{"This text\nfills two lines"}
 		\end{block}}
 			\vspace{12pt}
 		\uncover<+->{\begin{block}{Escaping}
@@ -342,17 +373,17 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 	
 	\begin{frame}
 		\metroset{block=fill}
-		\uncover<+->{\begin{block}{Woher weiß ich, welchen Typ eine Variable hat?}
+		\uncover<+->{\begin{block}{Typ einer Variablen ermitteln}
 			\vspace{2pt}
 			Mit der Funktion \py{type()} lässt sich der Typ bestimmen, z.B. \py{type(3.2)}.  	
 		\end{block}}
 		\vspace{12pt}
-		\uncover<+->{\begin{block}{Wie lassen sich Typen umwandeln?}
+		\uncover<+->{\begin{block}{Typumwandlung (\emph{Typecasting})}
 			\vspace{2pt}
 			\uncover<+->{\textbf{Implizit}\\
-			Bei manchen Operationen nimmt Python automatisch eine Typumwandlung vor. z.B. \py{1+2.0} ergibt \py{3.0}	\\ \\
-		}
-		\uncover<+->{\textbf{Explizit}\\
+			Bei manchen Operationen nimmt Python automatisch eine Typumwandlung vor. \\ Beispiel: \py{1 + 2.0} ergibt \py{3.0}	
+		} \\ \\
+		\uncover<+->{\textbf{Explizit \\}
 			Die Funktionen \py{int()}, \py{float()}, \py{str()} und \py{bool()} führen jeweils eine Typumwandlung durch (sofern möglich). Beispiele: 
 			\begin{itemize}
 				\item \py{int(2.0)} ergibt \py{2} 
@@ -387,7 +418,7 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 	
 	\begin{block}{Erkläre mit Deinen eigenen Worten}
 		\begin{itemize}
-			\item Nach welcher Regel wandelt \py{int()} ein \py{float} in eine ganze Zahl um? 
+			\item Nach welcher Regel wandelt \py{int()} eine Fließkommazahl in eine ganze Zahl um? 
 			\item Nach welchen Regeln wandelt \py{bool()} Zahlen und Strings in einen Wahrheitswert um? 
 		\end{itemize}
 	\end{block}
@@ -411,44 +442,51 @@ Um den interactive mode zu verlassen, gib \py{exit()} ein und bestätige mit der
 			\item \% (\textit{modulo-Operator}: Rest bei ganzzahliger Division)
 		\item \pybw{//} (Division und Abrunden, ergibt immer ein Wert vom Typ \pybw{int})
 		\item \pybw{==} (Vergleichsoperator, ergibt immer ein Wert vom Typ \pybw{bool})
+		\item \pybw{!=} (Ungleichheitsoperator, ergibt das Gegenteil von \pybw{==})
 	\end{itemize}
 \end{block}
 \end{frame}
 
 \begin{frame}
-\begin{block}{Präzedenz (oben höchste, unten niedrigste)}
-	\begin{enumerate}
+\begin{block}{Operator-Präzedenz}
+	\uncover<+->{
+	\begin{enumerate}[<+->]
 		\item Klammern
 		\item \pybw{**}
 		\item \pybw{*}, \pybw{/}, \pybw{//}, \%
 		\item \pybw{+},\pybw{-}
 	\end{enumerate}	
+	}
+\uncover<+->{
 Operatoren gleichen Rangs werden innerhalb eines Ausdrucks von links nach rechts abgearbeitet. 
+}
 
+\uncover<+->{
 \vspace{10pt}
 \textbf{Ausnahmen:}\\
-Potenzierung (\py{**}) und Zuweisung (\py{=}). 
+Potenzierung (\py{**}) und Zuweisung (\py{=}) werden von rechts nach links verarbeitet. 
+}
 \end{block}
 \end{frame}
 
 \begin{fragile}[]
-	\begin{block}{Kombinierte Zuweisung}
+\begin{block}{Kombinierte Zuweisung}
 		\vspace{2pt}
 		Oft möchte man eine gegebene Variable neu zuweisen: 
 		\begin{minted}{python}
 		counter = 1
 		counter = counter + 1 	# counter = 2
 		\end{minted}
-	Dies lässt sich auch kurz schreiben als 
+		\pause
+		Dies lässt sich auch kurz schreiben als 
 		\begin{minted}{python}
-	counter = 1
-	counter += 1 	# counter = 2
-	\end{minted}
-	Analog sind die Operatoren \py{-=}, \py{*=}, \py{/=}, etc. definiert. 
+		counter = 1
+		counter += 1 	# counter = 2
+		\end{minted}
+		\pause
+		Analog sind die Operatoren \py{-=}, \py{*=}, \py{/=}, etc. definiert. 
 	\end{block}
-	
-	
-	\end{fragile}
+\end{fragile}
 
 
 
@@ -458,8 +496,11 @@ Potenzierung (\py{**}) und Zuweisung (\py{=}).
 
 \begin{block}{Output}
 	\vspace{2pt}
-	Um einen String auf der Konsole auszugeben, verwende die Funktion \py{print()}. 
+	Um einen String auf der \emph{Konsole} auszugeben, verwende die Funktion \py{print()}. 
+	
+	
 	Zum Beispiel \py{print("Hello there")}. 
+	\pause
 	
 	Es können auch Variablen eingesetzt werden: 
 	\begin{minted}{python}
@@ -475,13 +516,13 @@ Potenzierung (\py{**}) und Zuweisung (\py{=}).
 	
 \begin{block}{String Interpolation}
 \vspace{2pt}
-Um Variablenwerte innerhalb eines Strings auszugeben, verwenden wir die String-Interpolation-Syntax
+Um Variablenwerte innerhalb eines Strings auszugeben, verwenden wir die String-Interpolation-Syntax:
 \begin{minted}{python}
 my_value = 5
 print(f"The variable my_value has the value {my_value}")
 # The variable my_value has the value 5
 \end{minted}
-
+\pause
 Das geht auch als \textit{inline expression}: 
 \begin{minted}{python}
 print(f"The sum of 1 and 2 is {1+2}")
@@ -496,12 +537,13 @@ print(f"The sum of 1 and 2 is {1+2}")
 \begin{block}{Output}
 	\vspace{2pt}
 Um einen String vom User einzulesen, verwende die Funktion \py{input()}:
+
 \begin{minted}{python}
 age = input("How old are you?")
 print(f"I am {age} years old")
 \end{minted}
 \end{block}
-
+\pause 
 \begin{alertblock}{Achtung}
 	\vspace{2pt}
 Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen eingelesen werden. Gegebenenfalls muss das Ergebnis mittels \py{int()} oder \py{float()} in den gewünschten Typ umgewandelt werden. 	
@@ -525,7 +567,7 @@ Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen 
 		print(f"Hello {name}, you are {age} years old") 
 		\end{minted}
 		
-		Speichere diesen Code in der Datei \py{my_script.py} ab. 
+		Speichere diesen Code in der Datei \pybw{my_script.py} ab. 
 		
 		Führe danach in diesem Ordner das Kommando 
 		\pybw{python my_script.py} aus. 
@@ -563,20 +605,24 @@ Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen 
 \begin{frame}
 	\begin{block}{Integrierte Entwicklungsumgebungen (IDE)}
 		\vspace{2pt}
+		\uncover<+->{
 	Die Arbeit mit gewöhnlichen Texteditoren ist auf Dauer sehr mühsam. Daher empfiehlt es sich eine IDE zu verwenden. 
-	Das bringt zum Beispiel folgende Vorteile: 
-	\begin{itemize}
+	Das bringt zum u.a. folgende Vorteile: 
+	\begin{itemize}[<+->]
 		\item Syntax-Highlighting
 		\item Code-Inspection
 		\item Autocomplete
 		\item Geile Shortcuts
-		\item Code ausführen und debuggen
+		\item Code direkt ausführen
+		\item Hilfe bei der Fehlersuche (\emph{Debugging})
 	\end{itemize}	
+		}
 	\end{block}
 \end{frame}
 
 \begin{frame}
-	\begin{block}{Installation von PyCharme}
+	\uncover<+->{
+	\begin{block}{Installation von PyCharm}
 		\vspace{2pt}
 		\begin{enumerate}
 			\item Gehe auf 
@@ -586,21 +632,23 @@ Das Ergebnis von \py{input} hat stets den Datentyp \py{string} auch wenn Zahlen 
 			\item Öffne PyCharm
 		\end{enumerate}
 	\end{block}
+	}
 	
-	
-	\begin{block}{Wenn alles passt, siehts etwas so aus}
+\uncover<+->{
+	\begin{block}{Wenn alles passt, sollte es etwa so aussehen:}
 		\vspace{2pt}
 		\begin{center}
 		\includegraphics[width=0.65\textwidth]{pycharme.jpg}
 		\end{center}
 	\end{block}
+}	
 	
 \end{frame}
 
 
 
 \begin{frame}
-	\begin{block}{Installation PyCharme}
+	\begin{block}{Installation PyCharm}
 		\vspace{2pt}
 		\begin{enumerate}
 			\item Gehe auf \texttt{Customize > All Settings...}

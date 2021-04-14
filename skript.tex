@@ -1,7 +1,8 @@
-\documentclass[algorithm,pgfplots,colortheme=dark]{cuzbeamer}
+\documentclass[algorithm,pgfplots,colortheme=light]{cuzbeamer}
 \usepackage[ngerman]{babel}
 \usepackage[scale=2]{ccicons}
 \usepackage{listings}
+\usepackage{csquotes}
 
 \newcommand{\py}[1]{\mintinline{python}{#1}}
 \newcommand{\pybw}[1]{\mintinline[style=bw]{python}{#1}}
@@ -154,6 +155,61 @@ Booleans können mittels folgender Operatoren miteinander verknüpft werden
 \end{alertblock}
 }
 
+\end{frame}
+
+\begin{fragile}
+
+\begin{block}{Das \pybw{elif}-Statement}
+	\vspace{2pt}
+Mit der reinen \pybw{if-else}-Syntax können nur \emph{binäre} Verzweigungen dargestellt werden. Um mehrer, gleichrangige Verzweigungsäste zu realisieren kann man das \pybw{elif}-Conditional verwenden. 
+\end{block}
+\pause
+\begin{exampleblock}{Beispiel}
+\begin{minted}{python}
+if x < 0: 
+    print("x is < 0")
+elif x == 0: 
+    print("x is 0")
+elif x == 1: 
+    print("x is 1")
+else: 
+    print("x is not negative but neither 0 nor 1")         
+\end{minted}
+\end{exampleblock}
+\pause
+Die Anzahl der \pybw{elif}-Blöcke ist beliebig. Der \pybw{else}-Block ist wie immer optional. 
+
+\end{fragile}
+
+\begin{fragile}{Übung}
+	\begin{block}{Für welche \pybw{x} unterscheiden sich die beiden Abschnitte?}
+		\vspace{5pt}
+		Abschnitt 1: 
+		\begin{minted}{python}
+		if x % 2 == 0: 
+		   # some Code here
+		if x % 3 == 0: 
+		   # some Code here
+		else: 
+		   # some Code here  
+		\end{minted}
+		Abschnitt 2: 
+		\begin{minted}{python}
+		if x % 2 == 0: 
+		# some Code here
+		elif x % 3 == 0: 
+		# some Code here
+		else: 
+		# some Code here  
+		\end{minted}
+	\end{block}
+\end{fragile}
+
+
+\begin{frame}
+
+\begin{block}{Der \emph{ternary Operator}}
+\end{block}
 \end{frame}
 
 \end{document}
