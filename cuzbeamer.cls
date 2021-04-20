@@ -230,7 +230,8 @@
     \ifxstringequal{\cuz@option@colortheme}{light}{%
         \usemintedstyle{friendly}%
     }{%
-        \usemintedstyle{monokai}%
+        \usemintedstyle{material}%
+        %\usemintedstyle{zenburn}%
     }%
     \setminted{%
         autogobble,% automatically remove the spaces to the left of the code
