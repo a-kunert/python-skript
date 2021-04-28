@@ -1,4 +1,4 @@
-\section{Arbeit mit einer IDE}
+\section{Eigenschaften einer IDE}
 
 \begin{frame}
 \begin{block}{Integrierte Entwicklungsumgebungen (IDE)}
@@ -18,6 +18,8 @@
 \end{block}
 \end{frame}
 
+\section{Installation}
+
 \begin{frame}
 \uncover<+->{
 \begin{block}{Installation von PyCharm}
@@ -26,8 +28,8 @@
 		\item Gehe auf 
 		\texttt{https://www.jetbrains.com/pycharm/download} \\
 		\item Lade die kostenlose \textit{Community Edition} herunter
-		\item Führe den Installer aus
-		\item Öffne PyCharm
+		\item Führe den Installer aus und folge der Installationsanleitung
+		\item Öffne PyCharm - falls Du gefragt wirst: Importiere \emph{keine} Settings an dieser Stelle
 	\end{enumerate}
 \end{block}
 }
@@ -40,50 +42,80 @@
 	\end{center}
 \end{block}
 }	
-
 \end{frame}
 
-
-
-
-
-
-
+\section{Konfiguration}
 
 \begin{frame}
-\begin{block}{Installation PyCharm}
+\begin{block}{Settings importieren}
 \vspace{2pt}
 \begin{enumerate}
-\item Gehe auf \texttt{Customize > All Settings...}
-\item Einstellungen synchronisieren
-\begin{enumerate}
-	\item \texttt{Tools > Settings Repository}
-	\item Unter \textit{Read-only Sources} auf \texttt{+}
-	\item \texttt{https://github.com/a-kunert/ide-settings.git}	eingeben
-	%\item  File > Manage IDE Settings > Sync with Settings Repository > Merge ausführen 
-\end{enumerate}
-\item Verknüpfe den Interpreter
-\begin{enumerate}
-	\item In den Settings auf \texttt{Python Interpreter}
-	\item Falls möglich unter \texttt{Python Interpreter} einen Interpreter wählen. Ansonsten wie folgt: 
-	\item \texttt{Zahnrad > Add}
-	\item \texttt{System Interpreter}
-	\item Dort den Pfad zu Python angeben
-\end{enumerate}
-\item Mit dem Button \textit{Apply} alles bestätigen
+\item Lade Dir aus der Salem-Cloud die Datei \\ \texttt{Programmieren/Pycharm-Settings/pycharm\_settings.zip} \\ herunter und speichere sie auf Deinem Rechner.
+\item Gehe in Pycharm auf \texttt{Customize > Import Settings...}
+\item Wähle die zuvor heruntergeladene Datei aus. 
+\item Führe einen Restart von Pycharm durch.
+\item Falls Du einen Mac hast, stelle unter \texttt{Customize > Keymap} die Keymap \texttt{Salem-Mac} ein. 
 \end{enumerate}
 \end{block}
 \end{frame}
-
+	
 \begin{frame}
-\begin{block}{Konfiguration abschließen}
+\begin{block}{Interpreter einrichten}
 \begin{enumerate}
-\item Lege eine Ordner für den Kurs an
-\item Öffne diesen Ordner mit \texttt{Projects > Open}
-\item \texttt{File > Manage IDE Settings > Sync with Settings Repository > Merge} ausführen
-\item Bei \texttt{File > Settings} unter \texttt{Keymap} die Keymap \textit{Salem-Win/Mac} auswählen. 
-\item Code in die Datei \texttt{main.py} schreiben
-\item Mittels grünem Pfeil (oben rechts) Code ausführen
+\item Öffne Pycharm
+\item Wähle \texttt{Project > New Project}
+\item Dort kannst Du folgendes einstellen:
+\begin{enumerate}
+	\item Wähle unter \texttt{Location} einen Pfad, den Du auf Deinem Rechner wiederfindest
+	\item Unter \texttt{Base Interpreter} wähle ein Python $\geq 3.6$ (Vorsicht: Der Punkt wird nicht immer mitgeschrieben)
+	\item Setze einen Haken unter \texttt{Make available to all projects} 
+	\item Setze den Haken unter \texttt{Create a main.py welcome script}
+\end{enumerate}
 \end{enumerate}	
 \end{block}
+
+\pause 
+
+\begin{block}{So könnte es in etwa aussehen}
+	
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{python_interpreter.jpg}
+	\end{center}
+	
+\end{block}
+
 \end{frame}
+
+
+\begin{frame}
+
+\begin{block}{Nachdem Du auf \texttt{create} geklickst hast, sollte es etwa wie folgt aussehen}
+\vspace{2pt}
+	\begin{center}
+		\includegraphics[width=0.85\textwidth]{pycharm_skript.jpg}
+	\end{center}	
+
+
+
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{block}{Den Code ausführen}
+\vspace{2pt}
+Klickst Du nun auf den grünen Pfeil oben rechts (siehe roter Kreis), sollte sich eine kleine Konsole öffnen und das Programm ablaufen. 
+Alternativ kannst Du auch die Tastenkombination \texttt{Cmd + Enter} (Mac) bzw. \texttt{Strg + Enter} (Windows) verwenden.  
+
+\pause
+
+\begin{center}
+	\includegraphics[width=0.85\textwidth]{pycharm_run.jpg}
+\end{center}	
+
+\end{block}
+
+\end{frame}
+
