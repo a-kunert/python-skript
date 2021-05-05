@@ -182,13 +182,37 @@ Schreibe ein kurzes Skript, dass Dich nach Deinem Namen, Alter und Adresse fragt
 \end{block}
 \end{frame}
 
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Adressabfrage}
+\begin{minted}{python}
+name = input("Dein Name: ")
+age = input("Dein Alter: ")
+street = input("Deine Addresse: ")
+city = input("Deine Stadt: ") 
 
-\begin{frame}{Übung}
+print(f"Hallo {Name}, schön, dass Du da bist. Du bist {age} Jahre alt")
+print(f"und wohnst in der {street} in {city}.")
+\end{minted}
+\end{solutionblock}
+\end{frame}
+
+
+
+\begin{fragile}[Übung]
 \begin{block}{Blick in die Zukunft}
 	\vspace{2pt}
 Schreibe ein kurzes Skript, dass Dich nach Deinem Alter fragt. Daraufhin soll es auf der Konsole ausgeben, wie alt Du in 15 Jahren sein wirst. 
 \end{block}
-\end{frame}
+\vspace{12pt}
+\begin{solutionblock}<beamer:0>{Lösung}
+\begin{minted}{python}
+age = input("Wie alt bist Du? ")
+age = int(age) + 15
+print(f"In 15 Jahren wirst Du {age} sein.")
+\end{minted}
+\end{solutionblock}
+\end{fragile}
 
 \section{Kommentare}
 
@@ -329,6 +353,32 @@ Ist die \texttt{if}-Bedingung \py{True}, so wird der \texttt{if}-\textit{Block} 
 
 \end{frame}
 
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösungen}
+\begin{solutionblock}{Zutrittskontrolle}
+\begin{minted}{python}
+age = input("Wie alt bist Du? ")
+age = int(age)
+
+if age >= 18:
+  print("Willkommen!")
+else:
+  print("Du darfst hier nicht rein!")
+\end{minted}
+\end{solutionblock}
+\vspace{12pt}
+\begin{solutionblock}{Teilbarkeit bestimmen}
+	\begin{minted}{python}
+	x = input("Gib eine Zahl ein: ")
+	x = int(x)
+	
+	if x % 7 == 0:
+	print(f"Die Zahl {x} ist durch 7 teilbar")
+	else:
+	print(f"Die Zahl {x} ist nicht durch 7 teilbar")
+	\end{minted}
+\end{solutionblock}
+\end{frame}
 
 
 \begin{frame}
@@ -446,6 +496,21 @@ Daraufhin soll auf der Konsole \texttt{confirmed} oder \texttt{aborted} erschein
 \end{block}
 \end{frame}
 
+
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Bestätigungsdialog}
+\begin{minted}{python}
+answer = input("Are you sure to continue? Type (y)es/(n)o: ")
+
+if answer == "y" or answer == "yes":
+  print("continue")
+else:
+  print("aborted")
+\end{minted}
+\end{solutionblock}
+\end{frame}
+
 \begin{frame}{Komplexere Übung}
 %\begin{block}{Berechne Deinen Urlaubsort}
 %\vspace{2pt}
@@ -455,6 +520,34 @@ Daraufhin soll auf der Konsole \texttt{confirmed} oder \texttt{aborted} erschein
 \end{center}
 Lies eine Zahl zwischen 1 und 9 ein und gib auf der Konsole \emph{deinen nächsten Urlaubsort} aus. 
 \end{frame}
+
+
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Urlaubsort}
+\begin{minted}{python}
+number = input("Gib eine Zahl zwischen 1 und 9 ein: ")
+number = int(number)
+
+number = number * 3
+number = number + 3
+number = number * 3
+
+cross_sum = number // 10 + number % 10
+print("Dort verbringst Du Deinen Urlaub: ")
+if cross_sum == 1:
+  print("Italien")
+elif cross_sum == 2:
+  print("Spanien")
+# ... more elif statements ... 
+elif cross_sum == 9:
+  print("Zu Hause")
+else:
+  print("USA")
+\end{minted}
+\end{solutionblock}
+\end{frame}
+
 
 
 \begin{fragile}{}
@@ -480,14 +573,25 @@ Oftmals möchte man eine Variable in Abhängigkeit eines Wahrheitswertes definie
 \end{block}
 \end{fragile}
 
-\begin{frame}{Übung}
+\begin{fragile}[Übung]
 
-\begin{block}{}
+\begin{block}{Ternary Operator}
 	\vspace{2pt}
 Lies eine ganze Zahl ein und gib ihren Betrag auf der Konsole aus. Schaffst Du es, das Ganze mit weniger als 5 Zeilen Code zu programmieren? 
 \end{block}
 
-\end{frame}
+\vspace{12pt}
+
+\begin{solutionblock}<beamer:0>{Lösung}
+\begin{minted}{python}
+x = input("Gib eine Zahl ein: ")
+x = float(x)
+abs_value = x if x >= 0 else -x
+print(f"Der Betrag von {x} ist {abs_value}")
+\end{minted}
+\end{solutionblock}
+
+\end{fragile}
 
 
 

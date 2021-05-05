@@ -20,11 +20,12 @@ Wie macht man das?
 \end{frame}
 
 \begin{fragile}{}
-	\begin{block}{Lösung}
+	\begin{block}{Lösung \footnotesize (fast)}
 		\begin{minted}{python}
 			x = input("Enter a number")
+			x = int(x)
 			
-			for k in range(1, x + 1):	
+			for k in range(1, x):	
 			  print(k)
 		\end{minted}
 	\end{block}
@@ -65,7 +66,7 @@ Wie macht man das?
 \end{block}
 \end{frame}
 
-\begin{frame}{Übung}
+\begin{fragile}[Übung]
 
 \begin{block}{Einmaleins: Die 7er-Reihe}
 	\vspace{2pt}
@@ -74,50 +75,98 @@ Schreibe ein kleines Skript, was die 7er-Reihe (bis 70) wie folgt auf der Konsol
 \texttt{1 mal 7 ist 7}\\	
 \texttt{2 mal 7 ist 14}\\
 \phantom{4 mal} \vdots  
-
 \end{block}
 
 \vspace{12pt}
 
-\pause 
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+for k in range(1, 10 + 1):
+  print(f"{k} mal 7 ist {7 * k}")
+\end{minted}
+\end{solutionblock}
+
+\end{fragile}
+
+
+
+\begin{fragile}[Übung]
+
 
 \begin{block}{7er-Reihe mit beliebigem oberen Ende}
 \vspace{2pt}
 Lies eine positive ganze Zahl \py{x} ein und gib die 7er-Reihe von \py{7} bis mindestens \py{x} wie oben auf der Konsole aus.
 \end{block}
 
-\pause
-
 \vspace{12pt}
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+limit = input("Bis wie weit soll die 7-er Reihe gezählt werden? ")
+limit = int(limit)
 
+limit = limit // 7 + 1
+# man addiert 1, da man nach der Division aufrunden möchte.
+# Ist limit eine 7er-Zahl zählt man halt ein bisschen zu weit
+
+for k in range(1, limit + 1):
+  print(f"{k} mal 7 ist {7 * k}")
+\end{minted}
+\end{solutionblock}
+
+
+\end{fragile}
+
+\begin{fragile}[Übung]
 \begin{block}{Schleife über einen String}
 \vspace{2pt}
 Lies Deinen Namen (oder irgendein Wort) auf der Konsole ein und überprüfe, ob er den Buchstaben \emph{a} (groß/klein) enthält. 
 \end{block}
-\end{frame}
+\vspace{12pt}
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+name = input("Gib ein Wort ein: ")
+
+# Flag (Schalter) initialisieren
+name_contains_letter_a = False
+
+for letter in name:
+  if letter == "a" or letter == "A":
+    name_contains_letter_a = True
+
+if name_contains_letter_a:
+  print("Der Name enthält ein 'a'.")
+else:
+  print("Der Name enthält kein 'a'.")
+\end{minted}
+\end{solutionblock}
 
 
-\begin{frame}{Schwierigere Übungen}
+\end{fragile}
+
+
+
+
+\begin{fragile}[Schwierigere Übungen]
 
 \begin{block}{Das Gauss-Problem}
 \vspace{2pt}	
 Berechne die Summe der Zahlen 1 bis 100. 
 \end{block}
 \vspace{12pt}
-\pause
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+result = 0
+for k in range(1, 100 + 1):
+  result = result + k
+print(f"Das Ergebnis ist {result}.")
+\end{minted}
+\end{solutionblock}
 
-\begin{block}{Fibonacci-Zahlen}
-	\vspace{2pt}
-Die Zahlenfolge $1,1,2,3,5,8,13\ldots$ nennt man \emph{Fibonacci}-Folge. Dabei ensteht ein Element der Folge, durch die Addition des vorherigen und vorvorherigen Elements. 
 
-\vspace{1pt}
 
-Berechne die 30. Fibonacci-Zahl.  
-\end{block}
+\end{fragile}
 
-\end{frame}
-
-\begin{frame}{Harte Übungen}
+\begin{fragile}[Harte Übung I]
 
 \begin{block}{Quersumme}
 	\vspace{2pt}
@@ -129,8 +178,22 @@ Berechne die 30. Fibonacci-Zahl.
 \end{block}
 
 \vspace{12pt}
-\pause
 
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+number = input("Gib eine Zahl ein: ")
+result = 0
+# Wir lassen die Zahl als String, damit wir eine Schleife über die Ziffern legen können
+for digit in number:
+  result = result + int(digit)  # Achtung: digit ist ja eigentlich ein String
+
+print(f"Die Quersumme von {number} ist {result}")
+\end{minted}
+\end{solutionblock}
+
+\end{fragile}
+
+\begin{fragile}[Harte Übung II]
 \begin{block}{Zahlenmuster}
 	\vspace{2pt}	
 	Gib folgendes Muster auf der Konsole aus: 
@@ -143,8 +206,45 @@ Berechne die 30. Fibonacci-Zahl.
 	\texttt{1 2 $\cdots$ 20}
 \end{block}
 
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+for row in range(1, 20 + 1):
+  row_string = ""  # Hier wird das Ergebnis pro Zeile initialisiert
+  for column in range(1, row +1):
+    row_string = row_string + str(column) + " "
+  print(row_string)
+\end{minted}
+\end{solutionblock}
 
-\end{frame}
+\end{fragile}
+
+\begin{fragile}[Brutale Übung]
+	
+	
+	\begin{block}{Fibonacci-Zahlen}
+		\vspace{2pt}
+		Die Zahlenfolge $1,1,2,3,5,8,13\ldots$ nennt man \emph{Fibonacci}-Folge. Dabei ensteht ein Element der Folge, durch die Addition des vorherigen und vorvorherigen Elements. 
+		
+		\vspace{1pt}
+		
+		Berechne die 30. Fibonacci-Zahl.  
+	\end{block}
+	\vspace{12pt}
+	\begin{solutionblock}{Lösung}
+		\begin{minted}{python}
+		last = 1  # letzte Zahl
+		current = 1  # aktuelle Zahl
+		
+		for k in range(2, 30 + 1):
+		old_current = current  # Zahl zwischenspeichern
+		current = current + last
+		last = old_current
+		print(f"Die {k}-te Fibonacci-Zahl ist {current}")
+		\end{minted}
+	\end{solutionblock}
+	
+	
+\end{fragile}
 
 
 \section{Die While-Schleife \\ \footnotesize Wie die For-Schleife nur abstrakter und open-end}
@@ -208,51 +308,47 @@ Berechne die 30. Fibonacci-Zahl.
 \end{alertblock}
 \end{frame}
 
-\begin{frame}{Übung}
+
+\begin{fragile}{Übung}
 
 \begin{block}{Ersetze eine \pybw{for}-Schleife durch eine \pybw{while}-Schleife}
 \vspace{2pt}
-Schreib ein Programm, dass alle 7er-Zahlen von 7 bis 700 auf der Konsole ausgibt.  
+Schreib ein Programm, dass alle 7er-Zahlen von 7 bis 700 auf der Konsole ausgibt. 
+
+\begin{solutionblock}{Lösung}
+\begin{minted}{python}
+k = 7
+while k <= 70:
+  print(k)
+  k = k + 7
+\end{minted}
+\end{solutionblock}
+ 
 \end{block}
 
-%\pause 
-%\vspace{12pt}
+\end{fragile}
 
-%\begin{block}{Bestätigungsdialog \emph{deluxe}}
+
+
+
+%\begin{frame}{Übung}
+%
+%\begin{block}{Notenrechner}
 %\vspace{2pt}
-%Verbessere den Bestätigungsdialog:  
-
-%\texttt{Are you sure to continue? (y)es/(n)o}. 
-
-%Mögliche Antworten sind \texttt{yes}, \texttt{no} bzw. \texttt{y}, \texttt{n}. 
-
-%Daraufhin soll auf der Konsole \texttt{continued} oder \texttt{aborted} erscheinen. 
-%Falls die Eingabe nicht klar erkannt wird, soll die Frage nochmal auf der Konsole gestellt werden. 
-
-%Zum Beispiel: 
-%\texttt{Please enter either "yes"{} or "no"}  
+%Schreib ein Programm, dass wiederholt nach einer Note von Dir fragt und Dir dann jeweils die aktuelle Durchschnittsnote auf der Konsole ausgibt. 
+%Das Programm soll durch die Eingabe vom Buchstaben \textbf{q} beendet werden können. 
+%
+%Beispielausgabe: 
+%
+%\texttt{Bitte gib eine Note oder q zum Beenden ein:} \py{1} \\
+%\texttt{Deine Durchschnittsnote ist 1.0} \\
+%\texttt{Bitte gib eine Note oder q zum Beenden ein:} \py{2} \\
+%\texttt{Deine Durschnittsnote ist 1.5} \\
+%\phantom{Code} \vdots 
+%	
 %\end{block}
-
-\end{frame}
-
-\begin{frame}{Übung}
-
-\begin{block}{Notenrechner}
-\vspace{2pt}
-Schreib ein Programm, dass wiederholt nach einer Note von Dir fragt und Dir dann jeweils die aktuelle Durchschnittsnote auf der Konsole ausgibt. 
-Das Programm soll durch die Eingabe vom Buchstaben \textbf{q} beendet werden können. 
-
-Beispielausgabe: 
-
-\texttt{Bitte gib eine Note oder q zum Beenden ein:} \py{1} \\
-\texttt{Deine Durchschnittsnote ist 1.0} \\
-\texttt{Bitte gib eine Note oder q zum Beenden ein:} \py{2} \\
-\texttt{Deine Durschnittsnote ist 1.5} \\
-\phantom{Code} \vdots 
-	
-\end{block}
-
-\end{frame}
+%
+%\end{frame}
 
 \begin{frame}{Übung}
 
@@ -276,297 +372,106 @@ Das Spiel soll mit der Eingabe von \pybw{q} abgebrochen werden können.
 Google, wie Python die Zahl \pybw{number_to_guess} zufällig erzeugen kann (das verbessert das Gameplay).  
 
 \end{block}
-
 \end{frame}
 
-\section{\texttt{break} und \texttt{continue} \\ \footnotesize Den Fluss kontrollieren}
 
 
-\begin{fragile}
-	
-\metroset{block=fill}
-
-\begin{block}{Das \texttt{break}-Statement}
-Taucht innerhalb einer Schleife das Schlüsselwort \py{break} auf, so wird die weitere Abarbeitung der Schleife abgebrochen. Die Ausführung wird mit dem Code \emph{nach} dem Schleifenblock ausgeführt. 		
-\end{block}
-
-\metroset{block=transparent}
-
-\vspace{12pt} \pause 
-
-
-\begin{exampleblock}{Beispiel}
-\vspace{2pt}
-
-\begin{overprint}
-	\onslide<2|handout:0>
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Ratespiel ohne Zusätze}
 \begin{minted}{python}
-for k in range(1,100):
-  print(k)
-  if k > 3:
-    break
+number_to_guess = 512
+guess = input("Rate meine Zahl: ")
+guess = int(guess)
+
+while guess != number_to_guess:
+  if guess < number_to_guess:
+    print("Deine Zahl war zu klein")
+  else:
+    print("Deine Zahl war zu groß")
+  guess = input("Versuch's nochmal: ")
+  guess = int(guess)
+
+print("Du hast gewonnen")
 \end{minted}
-\onslide<3|handout:1>
+\end{solutionblock}
+\end{frame}
+
+
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Ratespiel mit Zusatz 1}
 \begin{minted}{python}
-for k in range(1,100):
-  print(k)
-  if k > 3:
-    break
-# prints 1 2 3 4 
+number_to_guess = 512
+guess = input("Rate meine Zahl: ")
+guess = int(guess)
+counter = 1
+
+while guess != number_to_guess:
+  if guess < number_to_guess:
+    print("Deine Zahl war zu klein")
+  else:
+    print("Deine Zahl war zu groß")
+  guess = input("Versuch's nochmal: ")
+  guess = int(guess)
+  counter = counter + 1
+  
+print(f"Du hast nach {counter} Versuchen gewonnen")	
 \end{minted}
-\end{overprint}
-
-\end{exampleblock}
-
-	
-\end{fragile}
+\end{solutionblock}
+\end{frame}
 
 
-
-\begin{fragile}
-	
-\metroset{block=fill}
-
-\begin{block}{Das \texttt{continue}-Statement}
-Taucht innerhalb einer Schleife das Schlüsselwort \py{continue} auf, so wird der aktuelle Schleifendurchgang abgebrochen. Die Ausführung wird mit der nächsten Schleifeniteration fortgesetzt. 
-\end{block}
-
-\metroset{block=transparent}
-
-\vspace{12pt} \pause 
-
-
-\begin{exampleblock}{Beispiel}
-\vspace{2pt}
-
-\begin{overprint}
-\onslide<2|handout:0>
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Ratespiel mit Zusatz 2}
 \begin{minted}{python}
-for k in range(1,11):
-  if k % 2 == 0:
-    continue
-  print(k)
+number_to_guess = 512
+counter = 1
+guess = input("Rate meine Zahl: ")
+guess = int(guess)
+is_quit = False
+
+while guess != number_to_guess and not is_quit:
+  if guess < number_to_guess:
+    print("Deine Zahl war zu klein")
+  else:
+    print("Deine Zahl war zu groß")
+  guess = input("Versuch's nochmal: ")
+  if guess == "q":
+    is_quit = True
+  else: 
+    guess = int(guess)
+  counter = counter + 1
+
+if number_to_guess == guess: 
+  print(f"Du hast nach {counter} Versuchen gewonnen")	
 \end{minted}
-\onslide<3|handout:1>
+\end{solutionblock}
+\end{frame}
+
+
+
+
+\begin{frame}<beamer:0>[fragile]
+\frametitle{Lösung}
+\begin{solutionblock}{Ratespiel mit Zusatz 3}
 \begin{minted}{python}
-for k in range(1,11):
-  if k % 2 == 0:
-    continue
-  print(k)
-# prints 1 3 5 7 9 
+import random 
+
+number_to_guess = random.randint(1, 1000)
+guess = input("Rate meine Zahl: ")
+guess = int(guess)
+# ... usw. 
 \end{minted}
-\end{overprint}
-\end{exampleblock}
-	
-	
-\end{fragile}
-
-
-\begin{fragile}
-	
-\metroset{block=fill}
-
-\begin{block}{Der \texttt{else}-Block einer Schleife}
-Analog zum \py{if}-Statement, kann auch eine Schleife einen \py{else}-Block haben. Dieser wird ausgeführt, wenn die Schleife \emph{regulär} (also nicht durch die Verwendung von \py{break}) beendet wird.  
-\end{block}
-
-\metroset{block=transparent}
-
-\vspace{12pt} \pause 
-
-
-\begin{exampleblock}{Beispiel}
-\begin{minted}{python}
-name = input("Your name: ")
-
-for letter in name: 
-  if letter == "a":
-    print("Your name contains an a")
-    break
-else: 
-  print("Your name contains no a")
-\end{minted}
-\end{exampleblock}
-	
-	
-\end{fragile}
-
-
-
-\begin{frame}{Übung}
-	
-	\begin{block}{Die nächste 31er-Zahl}
-		\vspace{2pt}
-		Lies eine ganze Zahl \pybw{x} ein. Prüfe, ob unter den ersten 20 auf \pybw{x} folgenden Zahlen eine durch 31 teilbar ist. Gib sie in diesem Fall auf der Konsole aus, ansonsten gib aus, dass keine 31er-Zahl gefunden wurde.  
-	\end{block}	
-
-\end{frame}
-
-\begin{frame}{Schwierigere Übung}
-\begin{block}{Primzahltest}
-\vspace{2pt}
-Lies eine ganze Zahl \py{x} ein und überprüfe, ob diese Zahl eine Primzahl ist. Die Ausgabe des Programms soll etwa wie folgt aussehen:  
-
-\texttt{Die Zahl 28061983 ist eine Primzahl.}
-\end{block}
-\end{frame}
-
-\begin{frame}{Harte Übung}
-\begin{block}{Finde die nächste Primzahl}
-\vspace{2pt}
-Lies eine ganze Zahl \py{x} ein und finde die nächste Zahl größer \py{x}, die gleichzeitig eine Primzahl ist. 
-\end{block}
+\end{solutionblock}
 \end{frame}
 
 
-\section{Listen \\ \footnotesize Viele Variablen gleichzeitig speichern}
-
-
-\begin{frame}
-\begin{block}{Problemstellung}
-\vspace{2pt}
-Gib wie im Notenrechner nacheinander Schulnoten von Dir ein. 
-Alle Noten sollen gespeichert werden. Danach sollst Du die Wahl haben, die soundsovielte Note anzeigen lassen zu können.   
-
-	\vspace{8pt}
-
-Wie macht man das? 
-\end{block}
-\end{frame}
-
-\begin{fragile}{}
-\begin{block}{Lösung \footnotesize(fast)}
-\begin{minted}{python}
-...
-# Um das Eingeben der Noten kümmern wir uns noch
-grades = [12, 10, 7, 14, 13, 13, 6, 4, 15, 14] # Noten in Notenpunkten
-
-index = input("Die wievielte Note möchtest Du nochmal anschauen?")
-index = int(index)
-
-print(f"Deine { index }. Note ist { grades[index] } Punkte")
-\end{minted}
-\end{block}
-\end{fragile}
-
-
-\begin{fragile}
-
-\metroset{block=fill}
-\begin{block}{Struktur einer \emph{Liste}}
-\vspace{2pt}
-\large
-\texttt{my\_list = }\pause {\Large\texttt{[}}\pause 
-\emph{Element0}\pause,
-\pause 
-\emph{Element1}, \pause 
-\emph{Element2}, \pause 
- \dots   
-, \emph{ElementN}\pause \Large{\texttt{]}}
-\end{block}
-
-\pause 
-
-Die Variable \texttt{my\_list} trägt nicht nur einen Wert, sondern $N+1$ viele Werte. Ansonsten verhält sich \texttt{my\_list} wie eine ganz \enquote{normale} Variable. 
-Als Einträge einer Liste sind beliebige Werte mit beliebigen Datentypen zugelassen. 
-
-
-\vspace{12pt}
-
-\pause
-
-\textbf{Frage:} Welchen Datentyp hat die Liste \py{[2, 2.3, "Hello"]} ? 
-	
-\end{fragile}
-
-\begin{frame}
-	
-\begin{block}{Auf Listenelemente zugreifen}
-	
-	\vspace{2pt}
-	
-	Auf das \pybw{n}-te Element der Liste \py{my_list} kann man mittels \py{my_list[n]} zugreifen. 
-	
-	\pause 
-	
-    Mit \py{my_list[-1]} , \py{my_list[-2]}, etc. kann man auf das letzte, vorletzte, etc. Element von \pybw{my_list} zugreifen. 
-		
-\end{block}
-
-\pause 
-\vspace{12pt}
-
-\begin{alertblock}{Achtung}
-\vspace{2pt}
-Python fängt bei 0 an zu zählen. D.h. das erste Element in der Liste hat den Index 0. \\
-Beispiel: \py{my_list[1]} liefert das \emph{zweite} Element der Liste. 
-\end{alertblock}
-
-	
-\end{frame}	
-
-
-\begin{frame}
-\begin{block}{Schreibzugriff auf Listenelemente}
-\vspace{2pt}
-Nach dem gleichen Prinzip lassen sich einzelne Listeneinträge verändern. \\
-Beispiel: \py{my_list[3] = -23}. 
-\end{block}
-
-\pause 
-\vspace{12pt}
 
 
 
-\begin{alertblock}{Achtung}
-\vspace{2pt}
-Man kann nur schon existierende Listeneinträge verändern. 
-\end{alertblock}
 
-\pause 
-\vspace{12pt}
-
-
-
-\begin{exampleblock}{Neues Konzept}
-\vspace{2pt}
-Listen sind der erste Datentyp, den wir kennenlernen, der \emph{mutable} (veränderbar) ist. Die bisherigen Datentypen waren \emph{immutable}, d.h. man konnte sie zwar überschreiben, aber nicht verändern. 
-\end{exampleblock}
-
-\end{frame}
-
-\begin{frame}
-	
-\begin{block}{Listeneinträge hinzufügen}
-	\vspace{2pt}
-	Mit der \emph{Methode} \pybw{.append()} kann ein Eintrag zur Liste hinzugefügt werden. \\ 
-	Bsp: \py{my_list.append(12)} fügt einen weiteren Eintrag mit Wert \pybw{12} hinzu. 
-\end{block}	
-
-\pause 
-\vspace{12pt}
-
-
-\begin{block}{Listeneinträge entfernen}
-\vspace{2pt}
-Mit dem Keyword \pybw{del} kann man Einträge an einer bestimmten Position löschen. Dabei verschieben sich die darauffolgenden Einträge um \pybw{1} nach vorne. \\
-Beispiel: \py{del my_list[2]} löscht das dritte Element.  
-
-\pause 
-
-Mit der Methode \pybw{.remove()} kann man Einträge mit einem bestimmten Wert löschen. \\
-Beispiel: \py{my_list.remove(-23)} entfernt alle Einträge mit dem Wert \pybw{23}. Ist der Wert nicht vorhanden gibt es eine Fehlermeldung. 
-\end{block}
-\end{frame}
-
-\begin{frame}{Übung}
-
-\begin{block}{Das Eingangsproblem}
-\vspace{2pt}
-Schreibe ein kleines Programm, dass solange Deine Noten einliest, bist Du \pybw{q} drückst. Danach sollst Du die Möglichkeit haben, eine Zahl \pybw{k} einzugeben, so dass Dir die \pybw{k}-te Note angezeigt wird. 
-\end{block}	
-	
-\end{frame}
 
 	
 

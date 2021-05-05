@@ -157,7 +157,7 @@
 %-
 %-> The new fragile environment for fragile frames
 %-
-\newenvironment{fragile}[1][]{%
+\newenvironment<>{fragile}[1][]{%
     %- the environment option tells beamer to look the new name "fragile",
     %- instead of the original name "frame"
     \begin{frame}[fragile,environment=fragile]{#1}
@@ -235,7 +235,7 @@
     }%
     \setminted{%
         autogobble,% automatically remove the spaces to the left of the code
-        linenos=true,% show line numbers
+        linenos=false,% show line numbers
         fontsize=\footnotesize,% smaller font size
         % escapeinside=@@,% insert latex code between @ and @
         frame=lines,% frame styles: none or lines

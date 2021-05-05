@@ -1,4 +1,8 @@
-\documentclass[algorithm,pgfplots,colortheme=light]{cuzbeamer}
+\documentclass[algorithm,
+pgfplots,
+colortheme=dark,
+handout
+]{cuzbeamer}
 \usepackage[ngerman]{babel}
 \usepackage[scale=2]{ccicons}
 \usepackage{listings}
@@ -9,24 +13,40 @@
 \newcommand{\bash}[1]{\mintinline{bash}{#1}}
 \newcommand{\spacechar}{\texttt{\char32\hspace{2pt}}}
 
+%\newenvironment{mysolution}{\begin{frame}<beamer:0>[fragile]\begin{exampleblock}{Lösung}\begin{minted}{python}}%
+%		{\end{minted}\end{exampleblock}\end{frame}}
+
+
+%\newtheorem{solutionblock}{Example}
+\newenvironment<>{solutionblock}[1]{%
+\setbeamercolor{block title example}{fg=cyan!60!white}%
+\begin{exampleblock}<beamer:0>{#1}
+\vspace{2pt}
+	
+}%
+{\end{exampleblock}}
+
+
+
+
 \begin{document}
 \input{initialization.tex}
+\subtitle{Teil 4: Datenstrukturen}
+\date{6. Mai 2021}
 
-%\title{Programmieren mit Python}
-%\subtitle{Teil 3: Schleifen}
-%\date{29. April 2021}
-
-%\author{Dr. Aaron Kunert}
-%\email{aaron.kunert@salemkolleg.de}
-
-
+\subtitle{Eine Einführung}
+\date{\today}
 \maketitle
 
 
 
-\input{skript_tag_1}
-\input{skript_tag_2}
-\input{skript_tag_3}
+
+
+
+%\input{skript_tag_1}
+%\input{skript_tag_2}
+%\input{skript_tag_3}
+\input{skript_tag_4}
 %\input{ide}
 
 
