@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
-\PYG{n}{friends} \PYG{o}{=} \PYG{p}{[]}
-\PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{):}
-  \PYG{n}{friend} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Wie heißt ein*e Freund*in von Dir? \PYGZdq{}}\PYG{p}{)}
-  \PYG{n}{friends}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{friend}\PYG{p}{)}
- \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{friends}\PYG{p}{)}
-\end{Verbatim}
