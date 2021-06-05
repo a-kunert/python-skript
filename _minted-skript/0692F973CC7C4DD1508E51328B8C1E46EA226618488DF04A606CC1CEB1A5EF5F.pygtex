@@ -1,9 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
-\PYG{n}{grades} \PYG{o}{=} \PYG{p}{\PYGZob{}} \PYG{l+s+s2}{\PYGZdq{}Mathe\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Bio\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Sport\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{13}\PYG{p}{\PYGZcb{}}
-\PYG{n}{new\PYGZus{}grades} \PYG{o}{=} \PYG{n}{grades}
-
-\PYG{n}{new\PYGZus{}grades}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Mathe\PYGZdq{}}\PYG{p}{]} \PYG{o}{=} \PYG{l+m+mi}{15}
-
-\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{grades}\PYG{p}{)}
-\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{new\PYGZus{}grades}\PYG{p}{)}
-\end{Verbatim}
