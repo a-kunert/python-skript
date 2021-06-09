@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{for} \PYG{n}{row} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{20} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{):}
+  \PYG{n}{row\PYGZus{}string} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}  \PYG{c+c1}{\PYGZsh{} Hier wird das Ergebnis pro Zeile initialisiert}
+  \PYG{k}{for} \PYG{n}{column} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{row} \PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{):}
+    \PYG{n}{row\PYGZus{}string} \PYG{o}{=} \PYG{n}{row\PYGZus{}string} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{column}\PYG{p}{)} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{} \PYGZdq{}}
+  \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{row\PYGZus{}string}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{majors} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}Deutsch\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{11}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Mathe\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{7}\PYG{p}{\PYGZcb{}}
+\PYG{n}{minors} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}Sport\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{14}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Bio\PYGZdq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{p}{\PYGZcb{}}
+
+\PYG{k}{for} \PYG{n}{key}\PYG{p}{,}\PYG{n}{value} \PYG{o+ow}{in} \PYG{n}{minors}\PYG{o}{.}\PYG{n}{items}\PYG{p}{():}
+  \PYG{n}{majors}\PYG{p}{[}\PYG{n}{key}\PYG{p}{]} \PYG{o}{=} \PYG{n}{value}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{majors}\PYG{p}{)}
+\end{Verbatim}

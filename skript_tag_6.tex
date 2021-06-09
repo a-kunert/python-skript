@@ -41,14 +41,14 @@ funktioniert nicht. Warum nicht?
 \vspace{2pt}
 
 \begin{minted}{python}
-outer_variable = 1
+global_variable = 1
 
 def my_function(): 
-  inner_variable = 5
+  local_variable = 5
 
 my_function()
-print(outer_variable)
-print(inner_variable)
+print(global_variable)
+print(local_variable)
 \end{minted}
 
 
@@ -72,14 +72,14 @@ Eine Variable, die innerhalb einer Funktion definiert wurde, ist auch nur innerh
 \vspace{2pt}
 
 \begin{minted}{python}
-outer_variable = 1
+global_variable = 1
 
 def my_function(): 
-  print(outer_variable)
+  print(global_variable)
  
 
 my_function()
-print(outer_variable)
+print(global_variable)
 \end{minted}
 
 
@@ -103,15 +103,15 @@ Eine \emph{globale} Variable ist auch innerhalb einer Funktion definiert.
 \vspace{2pt}
 
 \begin{minted}{python}
-outer_variable = 1
+global_variable = 1
 
 def my_function(): 
- outer_variable = 5
- print(outer_variable)
+  global_variable = 5
+  print(global_variable)
 
 
 my_function()
-print(outer_variable)
+print(global_variable)
 \end{minted}
 \vspace{12pt}
 
@@ -134,15 +134,15 @@ Eine Variable innerhalb einer Funktion kann den gleichen Namen wie eine Variable
 \vspace{2pt}
 
 \begin{minted}{python}
-outer_variable = 1
+global_variable = 1
 
 def my_function(): 
-  print(outer_variable)
-  outer_variable = 5
+  print(global_variable)
+  global_variable = 5
 
 
 my_function()
-print(outer_variable)
+print(global_variable)
 \end{minted}
 \vspace{12pt}
 
@@ -152,7 +152,7 @@ print(outer_variable)
 
 \pause 
 
-Python entscheidet anhand des Kontexts ob \py{outer_variable} eine globale Variable ist, oder eine lokale Variable, die zufällig den gleichen Namen wie eine globale Variable trägt. 
+Python entscheidet anhand des Kontexts ob \py{global_variable} eine globale Variable ist, oder eine lokale Variable, die zufällig den gleichen Namen wie eine globale Variable trägt. 
 
 \pause 
 
@@ -278,14 +278,14 @@ Da die Variable \py{my_list} nicht überschrieben wird, sondern nur das referenz
 	
 \begin{block}{Grundprinzip}
 \vspace{2pt}
-Um mit Dateien zu arbeiten, geht man immer in 3 Schritten vor
-\begin{enumerate}[<+->]
-	\item Datei öffnen 
-	\item Datei bearbeiten (d.h. z.B. lesen, überschreiben, etwas anhängen)
-	\item Datei schließen
-\end{enumerate}
-
+Um mit Dateien zu arbeiten, geht man immer in 3 Schritten vor:
 \pause 
+\begin{enumerate}
+	\item<2-> Datei öffnen 
+	\item<3-> Datei bearbeiten (d.h. z.B. lesen, überschreiben, etwas anhängen)
+	\item<4-> Datei schließen
+\end{enumerate}
+\pause \pause \pause
 Das Schließen von Dateien ist relativ wichtig, kann aber schnell mal vergessen werden. Daher bietet Python eine spezielle Syntax mithilfe des Keywords \py{with} an. 
 \end{block}
 \end{frame}
@@ -294,7 +294,7 @@ Das Schließen von Dateien ist relativ wichtig, kann aber schnell mal vergessen 
 \begin{fragile}
 \begin{block}{Gesamten Text einer Datei einlesen}
 \vspace{2pt}
-
+\pause 
 \begin{minted}{python}
 with open("some_file.txt") as my_file:
   my_text = my_file.read()
@@ -319,6 +319,7 @@ with open("some_file.txt") as my_file:
 
 \begin{fragile}
 \begin{block}{Den Text einer Datei zeilenweise einlesen}
+\pause 
 \vspace{2pt}
 
 \begin{minted}{python}
@@ -334,7 +335,7 @@ with open("some_file.txt") as my_file:
 \begin{exampleblock}{Erklärung}
 \vspace{2pt}
 \begin{itemize}[<+->]
-\item Die Methode \py{.readlines()} gibt eine \emph{Liste} der Zeilen des Inhalts der Datei \pybw{"some_file.txt"} zurück. 
+\item Die Methode \py{.readlines()} gibt eine \emph{Liste} der Zeilen des Inhalts der Datei \py{"some_file.txt"} zurück. 
 \item Durch diese Liste kann man mittels einer \pybw{for}-Schleife durchiterieren. 
 \end{itemize}
 \end{exampleblock}
@@ -346,10 +347,11 @@ with open("some_file.txt") as my_file:
 
 \begin{fragile}
 \begin{block}{Text in eine Datei schreiben}
+\pause 
 \vspace{2pt}
 
 \begin{minted}{python}
-with open("some_file.txt","w") as my_file:
+with open("some_file.txt", "w") as my_file:
   my_file.write("Hello everybody")
 \end{minted}
 
@@ -370,10 +372,11 @@ with open("some_file.txt","w") as my_file:
 
 \begin{fragile}
 \begin{block}{Text an eine Datei anhängen}
+\pause 
 \vspace{2pt}
 
 \begin{minted}{python}
-with open("some_file.txt","a") as my_file:
+with open("some_file.txt", "a") as my_file:
   my_file.write("Some text to append")
 \end{minted}
 
@@ -398,7 +401,7 @@ with open("some_file.txt","a") as my_file:
 	
 \begin{alertblock}{Achtung Umlaute}
 \vspace{2pt}
-Will man Dateien, die Umlauten und andere Sonderzeichen enthalten, bearbeiten, so muss man beim Öffnen der Datei noch den Parameter \pybw{encoding="UTF-8"} übergeben. 
+Will man Dateien, die Umlauten und andere Sonderzeichen enthalten, bearbeiten, so muss man beim Öffnen der Datei noch den Parameter \pybw{encoding="utf-8"} übergeben. 
 \end{alertblock}	
 
  \vspace{12pt}
@@ -406,7 +409,7 @@ Will man Dateien, die Umlauten und andere Sonderzeichen enthalten, bearbeiten, s
 \begin{exampleblock}{Beispiel}
 	\vspace{2pt}
 \begin{minted}{python}
-with open("some_file.txt","a", encoding="utf-8") as my_file:
+with open("some_file.txt", "a", encoding="utf-8") as my_file:
   my_file.write("Hier ein Text mit Umlauten: äöüß")
 \end{minted}
 \end{exampleblock}
@@ -432,19 +435,19 @@ JSON (Java Script Object Notation) ist ein Daten-Format, um Verschachtelungen vo
 \vspace{2pt}
 \begin{minted}{python}
 [
- {
-   "name": "Germany",
-   "capital": "Berlin",
-   "population": 83190556,
-   "cities": ["Berlin", "Hamburg","München","Köln"] 
- },
- {
-   "name": "France", 
-   "capital": "Paris",
-   "population": 67422000
-   "cities": ["Paris","Marseilles", "Lyon", "Toulouse"]
- },
- ...
+  {
+    "name": "Germany",
+    "capital": "Berlin",
+    "population": 83190556,
+    "cities": ["Berlin", "Hamburg","München","Köln"] 
+  },
+  {
+    "name": "France", 
+    "capital": "Paris",
+    "population": 67422000
+    "cities": ["Paris","Marseilles", "Lyon", "Toulouse"]
+  },
+  ...
 ]
 \end{minted}
 \end{exampleblock}
@@ -502,7 +505,7 @@ import json
 		my_data = {"a": 1, "b": 2}  # some dummy data
 		
 		with open("my_data.json","w") as my_file:
-		json.dump(my_data, my_file)
+		  json.dump(my_data, my_file)
 		\end{minted}
 		
 		\pause
@@ -549,41 +552,7 @@ print(data)
 \end{fragile}
 
 
-\section{Projekt: Geografie-Quiz}
 
-
-\begin{frame}
-\begin{block}{Das \emph{minimal viable product} (MVP)}
-\vspace{2pt}
-Anforderungen: 
-\pause 
-\begin{itemize}[<+->]
-	\item Es werden Länder aus einem JSON gelesen.
-	\item Zu einem Land aus der Liste wird die Hauptstadt abgefragt.
-	\item Es erscheinen 4 Lösungsmöglichkeiten (Multiple Choice).
-	\item Durch Eingabe einer Zahl zwischen 1 bis 4 kann getippt werden. 
-	\item Nach Eingabe erscheint ein kurzes Feedback (Richtig/Falsch).  
-\end{itemize}
-\end{block}
-\end{frame}
-	
-\begin{fragile}
-	
-\begin{exampleblock}{Beispielausgabe}
-\begin{verbatim}
-Was ist die Hauptstadt von Frankreich?
-
-(1) Bratislava
-(2) Berlin
-(3) Paris
-(4) Stockholm
- 
-Antwort: 
-\end{verbatim}
-\end{exampleblock}
-	
-	
-\end{fragile}
 
 
 

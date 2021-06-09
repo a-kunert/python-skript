@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{my\PYGZus{}hobbies} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}Segeln\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Tennis\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Schwimmen\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}Lesen\PYGZdq{}}\PYG{p}{]}
+
+\PYG{k}{for} \PYG{n}{hobby} \PYG{o+ow}{in} \PYG{n}{my\PYGZus{}hobbies}\PYG{p}{:}
+  \PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{hobby}\PYG{p}{)}
+\end{Verbatim}
